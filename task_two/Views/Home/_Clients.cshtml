@@ -1,0 +1,63 @@
+﻿@model Tuple<IEnumerable<task_two.Models.Category>, IEnumerable<task_two.Models.Prodact>, IEnumerable<task_two.Models.Messege>>
+<section class="clients bg-theme-colored">
+
+
+
+
+    <!-- Start Contact Us  -->
+    <div class="contact-box-main">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-sm-12">
+                    <div class="contact-form-right">
+                        <form asp-controller="Home" asp-action="_Clients">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label style="text-align: center !important; font-weight: bold;">Name</label>
+                                        <input type="text" class="form-control" id="NameMessege" name="NameMessege" placeholder="Your Name" required data-error="Please enter your name">
+                                        <div class="help-block with-errors"></div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label style="text-align: center !important; font-weight: bold;">Email</label>
+                                        <input type="email" placeholder="Your Email" id="SenderEmail" class="form-control" name="SenderEmail" required data-error="Please enter your email">
+                                        <div class="help-block with-errors"></div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label style="text-align: center !important; font-weight: bold;">Subject</label>
+                                        <input type="text" class="form-control" id="Subject" name="Subject" placeholder="Subject" required data-error="Please enter your Subject">
+
+                                        <div class="help-block with-errors"></div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label style="text-align: center !important; font-weight: bold;">Your Message</label>
+
+                                        <textarea class="form-control" id="ContactMessege" name="ContactMessege" placeholder="Your Message" rows="4" data-error="Write your message" required></textarea>
+                                        <div class="help-block with-errors"></div>
+                                    </div>
+
+                                    <div class="submit-button text-center">
+                                        <button class="btn hvr-hover" id="submit" type="submit">Send Message</button>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>                    <!-- End Cart -->
+
+</section>

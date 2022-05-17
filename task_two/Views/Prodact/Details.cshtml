@@ -1,0 +1,44 @@
+﻿@model task_two.Models.Prodact
+@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<div>
+    <h4>Prodact</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NameProdact)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NameProdact)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Describtion)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Describtion)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DateProdact)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DateProdact)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Units)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Units)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.IdProdact">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

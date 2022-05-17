@@ -1,0 +1,89 @@
+﻿<style>
+    .col-md-5 {
+        width: 26%;
+    }
+
+    .test {
+        font-weight: bold;
+        background-color: cyan;
+        font-family: cursive;
+    }
+</style>
+<script>
+    function read_more() {
+        var read_moredots = document.getElementById("read_moredots");
+        var read_moremoreText = document.getElementById("read_moremore");
+        var read_morebtnText = document.getElementById( "read_moremyBtn");
+
+        if (read_moredots.style.display === "none") {
+            read_moredots.style.display = "inline";
+            read_morebtnText.innerHTML = "Read more";
+            read_moremoreText.style.display = "none";
+        } else {
+            read_moredots.style.display = "none";
+            read_morebtnText.innerHTML = "Read less";
+            read_moremoreText.style.display = "inline";
+        }
+    }
+    
+
+</script>
+<section id="about">
+    <div class="container">
+        <div class="section-content">
+            <div class="row">
+                <div class="col-md-5">
+                    <div class="twentytwenty-container">
+                        <img src="~/assert/images/doctors/man6.jpg" alt="">
+                        <img src="~/assert/images/doctors/man7.jpg" alt="">
+                        @*<img src="~/assert/images/doctors/man6.jpg" alt="" style="border-radius: 7%; border: 10px solid ;" />*@
+
+                    </div>
+                </div>
+                <div class="col-md-7">
+                    <h2 class="font-size-38 mt-0">We Care <span class="text-theme-colored">About Your</span> teeth</h2>
+                    <p class="lead">
+                        <strong> Hello everybody</strong>
+                        <br />
+                        Welcome to <span class="test">Dentaladvisor</span>                     <br />
+
+
+                        My name is <span class="test">
+                            Dr.Abdul Aahman Abu Shamleh
+                        </span>    <br />
+
+                        I have masters degree in periodontology and oral medicine and implantology from beirut arab university.                        <br />
+
+                        I am the founder of white dental clinic in amman jordan.                        <br />
+
+                        I have  been practicing dentistry in lebanon,jordan,dubai from more than 15 years as well as taking so many courses,attending conferences in all over the world to keep updating with the latest news,techniques in the dental field.
+                        <span id="read_moredots" style="display: inline"></span><span id="read_moremore" style="display:none">
+
+                            From my experience in the private clinics in different countries , I noticed that people everywhere share the same  problems and lack of informations about their dental health. And they keep asking the same questions everytime.
+                            And going from clinic to clinic to make sure about their dental treatment to take the best advice and to recieve the best treatment plan they deserve.
+                            <br />
+
+                            From this point i decided to make this website to be your private dental advisor and consultant to give you the latest tips,informations,help you to decide the best treatment plans and to give you the back ground you need before going to seek the treatment in any dental office, by involving best doctors in different specialties working as team to give you all informations you need and answering your daily questions to help you getting the best dental care wherever you go to any dental office in the US or the rest of the world.
+                            <br />
+
+                            I hope that you will be one of our big family after you subscribe in this website.
+                            <br />
+
+                            Best wishes
+
+                        </span>
+                        <a style="background-color: cyan; font-family: cursive; font-weight:bold; " onclick="read_more()" id="read_moremyBtn">Read More</a>
+
+                    </p>
+                    <ul class="list-inline mt-30">
+
+                        @*<li><img src="~/assert/images/af1.jpg" alt="" width="80"></li>
+                            <li><img src="~/assert/images/af1.jpg" alt="" width="80"></li>
+                            <li><img src="http://placehold.it/120x99" alt="" width="80"></li>*@
+                    </ul>
+                    <a class="btn btn-theme-colored btn-lg btn-circled mt-30">Make Appointment Now</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,47 @@
+﻿@model IEnumerable<task_two.Models.Category>
+@{
+   
+
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+
+}
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.NameCategory)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UrlCategory)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Describtion)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NameCategory)
+                </td>
+                <td>
+                    <img src=@Url.Content("~/Image/" + item.UrlCategory) asp-append-version="true" style="border-radius:50%;" width="100px" height="100px" />
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Describtion)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.IdCategory">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.IdCategory">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.IdCategory">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

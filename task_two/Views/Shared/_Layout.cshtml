@@ -1,0 +1,84 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - task_two</title>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js" integrity="sha512-37T7leoNS06R80c8Ulq7cdCDU5MNQBwlYoy1TX/WUsLFC2eYNqtKlV0QjH7r8JpG/S0GUMZwebnVFLPd6SU5yg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <link href="~/assert/images/favicon.png" rel="shortcut icon" type="image/png">
+    <link href="~/assert/images/apple-touch-icon.png" rel="apple-touch-icon">
+    <link href="~/assert/images/apple-touch-icon-72x72.png" rel="apple-touch-icon" sizes="72x72">
+    <link href="~/assert/images/apple-touch-icon-114x114.png" rel="apple-touch-icon" sizes="114x114">
+    <link href="~/assert/images/apple-touch-icon-144x144.png" rel="apple-touch-icon" sizes="144x144">
+
+
+    <link href="~/assert/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="~/assert/css/jquery-ui.min.css" rel="stylesheet" type="text/css">
+    <link href="~/assert/css/animate.css" rel="stylesheet" type="text/css">
+    <link href="~/assert/css/css-plugin-collections.css" rel="stylesheet" />
+
+    <link href="~/assert/css/menuzord-megamenu.css" rel="stylesheet" />
+    <link id="menuzord-menu-skins" href="~/assert/css/menuzord-skins/menuzord-boxed.css" rel="stylesheet" />
+
+    <link href="~/assert/css/style-main.css" rel="stylesheet" type="text/css">
+
+    <link href="~/assert/css/preloader.css" rel="stylesheet" type="text/css">
+
+    <link href="~/assert/css/custom-bootstrap-margin-padding.css" rel="stylesheet" type="text/css">
+
+    <link href="~/assert/css/responsive.css" rel="stylesheet" type="text/css">
+
+    <link href="~/assert/js/revolution-slider/css/settings.css" rel="stylesheet" type="text/css" />
+    <link href="~/assert/js/revolution-slider/css/layers.css" rel="stylesheet" type="text/css" />
+    <link href="~/assert/js/revolution-slider/css/navigation.css" rel="stylesheet" type="text/css" />
+
+
+    <link href="~/assert/css/colors/theme-skin-color-set1.css" rel="stylesheet" type="text/css">
+
+
+    <script src="~/assert/js/jquery-2.2.4.min.js"></script>
+    <script src="~/assert/js/jquery-ui.min.js"></script>
+    <script src="~/assert/js/bootstrap.min.js"></script>
+
+    <script src="~/assert/js/jquery-plugin-collection.js"></script>
+
+
+    <script src="~/assert/js/revolution-slider/js/jquery.themepunch.tools.min.js"></script>
+    <script src="~/assert/js/revolution-slider/js/jquery.themepunch.revolution.min.js"></script>
+
+
+
+</head>
+<body class="has-side-panel side-panel-right fullwidth-page">
+    <div id="wrapper">
+
+
+        @*@Html.Partial("_hearder")*@
+        <partial name="_hearder" />
+
+        @RenderBody()
+
+        <partial name="_footer" />
+    </div>
+
+   
+
+
+    <script src="~/assert/js/custom.js"></script>
+
+    
+    <script src="~/assert/js/revolution-slider/js/extensions/revolution.extension.actions.min.js"></script>
+    <script src="~/assert/js/revolution-slider/js/extensions/revolution.extension.carousel.min.js"></script>
+    <script src="~/assert/js/revolution-slider/js/extensions/revolution.extension.kenburn.min.js"></script>
+    <script src="~/assert/js/revolution-slider/js/extensions/revolution.extension.layeranimation.min.js"></script>
+    <script src="~/assert/js/revolution-slider/js/extensions/revolution.extension.migration.min.js"></script>
+    <script src="~/assert/js/revolution-slider/js/extensions/revolution.extension.navigation.min.js"></script>
+    <script src="~/assert/js/revolution-slider/js/extensions/revolution.extension.parallax.min.js"></script>
+    <script src="~/assert/js/revolution-slider/js/extensions/revolution.extension.slideanims.min.js"></script>
+    <script src="~/assert/js/revolution-slider/js/extensions/revolution.extension.video.min.js"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

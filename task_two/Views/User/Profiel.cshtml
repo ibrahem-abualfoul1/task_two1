@@ -1,0 +1,49 @@
+﻿@model task_two.Models.Account
+@{ ViewData["Title"] = "Test";
+                Layout = "~/Views/Shared/_Layout.cshtml"; }
+
+
+
+@{
+    var ProfilePic = ViewBag.ProPic;
+    ProfilePic = "~/Image/" + ProfilePic;
+}
+
+<div class="container">
+    <div class="col-md-4">
+        <form asp-controller="User" asp-action="Profiel" enctype="multipart/form-data">
+
+            <!-- Form -->
+            <div class="form-group">
+                <input class="form-control" type="text" name="FName" id="FName" value="@Html.DisplayFor(modelItem => modelItem.Name)" placeholder=@Html.DisplayFor(modelItem => modelItem.Name)>
+            </div>
+
+            <div class="form-group">
+                <input class="form-control" type="text" name="LName" id="LName" value="@Html.DisplayFor(modelItem => modelItem.UerName)" placeholder=@Html.DisplayFor(modelItem => modelItem.UerName)>
+            </div>
+            <div class="form-group">
+                <input class="form-control" type="email" name="Email" id="Email" value="@Html.DisplayFor(modelItem => modelItem.Email)" placeholder=@Html.DisplayFor(modelItem => modelItem.Email)>
+            </div>
+            <div class="form-group">
+                <input class="form-control" type="text" name="UName" id="UName" value="@Html.DisplayFor(modelItem => modelItem.Phone_number)" placeholder=@Html.DisplayFor(modelItem => modelItem.Phone_number)>
+            </div>
+            <div class="form-group">
+                <input class="form-control" type="password" name="Password" id="Password" value="@Html.DisplayFor(modelItem => modelItem.Password)" placeholder="***********">
+            </div>
+            <div class="form-group">
+
+                <input name="ProfilePicture" type="file" id="ProfilePicture" accept="image/*" value="@Html.DisplayFor(modelItem => modelItem.ImageFile_back)" style="margin:0px 6px 2px 4px" />
+            </div>
+
+            <div class="submit-button text-center">
+
+                <div class="submit-button text-center">
+                    <input type="submit" name="signup" id="signup" class="btn hvr-hover" value="Profiel" />
+                </div>
+
+
+            </div>
+        </form>
+    </div>
+</div>
+
