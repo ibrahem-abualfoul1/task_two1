@@ -123,6 +123,12 @@ namespace task_two.Controllers
             var modelitems = Tuple.Create<IEnumerable<task_two.Models.Category>, IEnumerable<task_two.Models.Prodact>, IEnumerable<task_two.Models.Messege>>(itemCategories, itemprodacts, itemmessege);
             return View(modelitems);
         }
+        public IActionResult Logout()
+        {
+         
+            HttpContext.Session.Clear();
+            return RedirectToAction("Index", "Home");
+        }
         public IActionResult Profiel()
         {
             var UserData = _userContext.User.SingleOrDefault(x => x.Id == HttpContext.Session.GetInt32("id"));
@@ -150,5 +156,6 @@ namespace task_two.Controllers
             _userContext.SaveChanges();
             return View(UserData);
         }
+      
     }
 }
