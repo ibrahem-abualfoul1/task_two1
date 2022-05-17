@@ -129,6 +129,24 @@ namespace task_two.Controllers
             HttpContext.Session.Clear();
             return RedirectToAction("", "Home");
         }
+        [HttpGet]
+        public IActionResult showproudact(int c)
+        {
+            ViewBag.id = HttpContext.Session.GetInt32("id");
+            ViewBag.usernae_secc = HttpContext.Session.GetString("usernae_secc");
+            ViewBag.id = c;
+            var pro2 = _userContext.prodacts.Where(x => x.IdCategory == c).ToList();
+            return View(pro2);
+        }
+        public IActionResult showproudact()
+        {
+            ViewBag.id = HttpContext.Session.GetInt32("id");
+            ViewBag.usernae_secc = HttpContext.Session.GetString("usernae_secc");
+            var itemprodacts = _userContext.prodacts.ToList();
+            var modelitems = Tuple.Create<IEnumerable<task_two.Models.Prodact>>(itemprodacts);
+            return View(modelitems);
+
+        }
         public IActionResult Profiel()
         {
             var UserData = _userContext.User.SingleOrDefault(x => x.Id == HttpContext.Session.GetInt32("id"));
