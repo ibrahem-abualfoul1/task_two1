@@ -127,7 +127,7 @@ namespace task_two.Controllers
         {
          
             HttpContext.Session.Clear();
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("", "Home");
         }
         public IActionResult Profiel()
         {
