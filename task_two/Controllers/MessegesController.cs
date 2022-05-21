@@ -152,7 +152,21 @@ namespace task_two.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        public IActionResult Logout()
+        {
 
+
+            if (HttpContext.Session.GetString("usernae_secc") != null)
+            {
+                HttpContext.Session.Clear();
+                return RedirectToAction("Index", "Home");
+
+            }
+
+
+
+            return View();
+        }
 
         private bool categorieExists(decimal id)
         {
