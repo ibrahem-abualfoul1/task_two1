@@ -14,12 +14,12 @@ using task_two.Models;
 
 namespace task_two.Controllers
 {
-    public class CategoriesController : Controller
+    public class MessegesController : Controller
     {
         private readonly UserContext _context;
         private readonly IWebHostEnvironment _hostEnvironment;
 
-        public CategoriesController(UserContext context, IWebHostEnvironment _hostEnvironment)
+        public MessegesController(UserContext context, IWebHostEnvironment _hostEnvironment)
         {
             this._hostEnvironment = _hostEnvironment;
             _context = context;
@@ -28,9 +28,9 @@ namespace task_two.Controllers
         {
             ViewBag.id = HttpContext.Session.GetInt32("id");
             ViewBag.usernae_secc = HttpContext.Session.GetString("usernae_secc");
-            return View(await _context.categories.ToListAsync());
+            return View(await _context.messeges.ToListAsync());
         }
-        // GET: categories/Details/5
+        // GET: MangePages/Details/5
         public async Task<IActionResult> Details(int id)
         {
             if (id == null)
@@ -38,9 +38,9 @@ namespace task_two.Controllers
                 return NotFound();
             }
 
-            var categorie = await _context.categories
-               
-                .FirstOrDefaultAsync(m => m.IdCategory == id);
+            var categorie = await _context.messeges
+
+                .FirstOrDefaultAsync(m => m.IdMessege == id);
             if (categorie == null)
             {
                 return NotFound();
@@ -48,32 +48,21 @@ namespace task_two.Controllers
 
             return View(categorie);
         }
-        // GET: categories/Create
+        // GET: MangePages/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: categories/Create
+        // POST: MangePages/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(Category categorie)
+        public async Task<IActionResult> Create(Messege categorie)
         {
             if (ModelState.IsValid)
             {
-                string wwwRootPath = _hostEnvironment.WebRootPath;
-                string fileName = Guid.NewGuid().ToString() + "_" + categorie.ImageFile_Category.FileName;
-                string extension = Path.GetExtension(categorie.ImageFile_Category.FileName);
-                string path = Path.Combine(wwwRootPath + "/Image/", fileName);
-                using (var fileStream = new FileStream(path, FileMode.Create))
-                {
-                    await categorie.ImageFile_Category.CopyToAsync(fileStream);
-                }
-                categorie.UrlCategory = fileName;
-
-
                 _context.Add(categorie);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -81,7 +70,7 @@ namespace task_two.Controllers
 
             return View(categorie);
         }
-        // GET: categories/Edit/5
+        // GET: Testimonial/Edit/5
         public async Task<IActionResult> Edit(int id)
         {
             if (id == null)
@@ -89,7 +78,7 @@ namespace task_two.Controllers
                 return NotFound();
             }
 
-            var categorie = await _context.categories.FindAsync(id);
+            var categorie = await _context.messeges.FindAsync(id);
             if (categorie == null)
             {
                 return NotFound();
@@ -97,14 +86,14 @@ namespace task_two.Controllers
             return View(categorie);
         }
 
-        // POST: categories/Edit/5
+        // POST: Testimonial/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, Category categorie)
+        public async Task<IActionResult> Edit(int id, Messege categorie)
         {
-            if (id != categorie.IdCategory)
+            if (id != categorie.IdMessege)
             {
                 return NotFound();
             }
@@ -113,22 +102,13 @@ namespace task_two.Controllers
             {
                 try
                 {
-                    string wwwRootPath = _hostEnvironment.WebRootPath;
-                    string fileName = Guid.NewGuid().ToString() + "_" + categorie.ImageFile_Category.FileName;
-                    string extension = Path.GetExtension(categorie.ImageFile_Category.FileName);
-                    string path = Path.Combine(wwwRootPath + "/Image/", fileName);
-                    using (var fileStream = new FileStream(path, FileMode.Create))
-                    {
-                        await categorie.ImageFile_Category.CopyToAsync(fileStream);
-                    }
-                    categorie.UrlCategory = fileName;
 
                     _context.Update(categorie);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!categorieExists(categorie.IdCategory))
+                    if (!categorieExists(categorie.IdMessege))
                     {
                         return NotFound();
                     }
@@ -143,7 +123,7 @@ namespace task_two.Controllers
             return View(categorie);
         }
 
-        // GET: categories/Delete/5
+        // GET: Testimonial/Delete/5
         public async Task<IActionResult> Delete(int id)
         {
             if (id == null)
@@ -151,8 +131,8 @@ namespace task_two.Controllers
                 return NotFound();
             }
 
-            var categorie = await _context.categories
-                .FirstOrDefaultAsync(m => m.IdCategory == id);
+            var categorie = await _context.messeges
+                .FirstOrDefaultAsync(m => m.IdMessege == id);
             if (categorie == null)
             {
                 return NotFound();
@@ -161,13 +141,13 @@ namespace task_two.Controllers
             return View(categorie);
         }
 
-        // POST: categories/Delete/5
+        // POST: Testimonial/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var categorie = await _context.categories.FindAsync(id);
-            _context.categories.Remove(categorie);
+            var categorie = await _context.messeges.FindAsync(id);
+            _context.messeges.Remove(categorie);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
@@ -176,7 +156,7 @@ namespace task_two.Controllers
 
         private bool categorieExists(decimal id)
         {
-            return _context.categories.Any(e => e.IdCategory == id);
+            return _context.messeges.Any(e => e.IdMessege == id);
         }
     }
 }

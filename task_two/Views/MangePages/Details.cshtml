@@ -1,0 +1,49 @@
+﻿@model task_two.Models.MangePage
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>MangePage</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.AboutUs)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AboutUs)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ContactUs)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ContactUs)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.pharmacyName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.pharmacyName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Pharmacylocation)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Pharmacylocation)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.SocialMedia)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SocialMedia)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

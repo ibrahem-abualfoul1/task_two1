@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿@{ var name = ViewBag.usernae_secc;
+    var id = ViewBag.id;
+}
+<!DOCTYPE html>
 
 <html>
 <head>
@@ -11,20 +14,21 @@
     <link href="/assets/css/material-dashboard.css" rel="stylesheet" />
 </head>
 <body>
-    
+
     <div class="wrapper ">
         <div class="sidebar" data-color="purple" data-background-color="white">
             <!--
-                Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
+        Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
 
-                Tip 2: you can also add an image using data-image tag
-            -->
+        Tip 2: you can also add an image using data-image tag
+    -->
             <div class="logo">
-                <a  class="simple-text logo-mini">
-                    Hello admin
+                <a class="simple-text logo-mini">
+                    Hello admin @name
                 </a>
-                
+
             </div>
+
             <div class="sidebar-wrapper">
                 <ul class="nav">
                     <li class="nav-item active  ">
@@ -64,23 +68,24 @@
                         </a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="/Transtions/Index">
+                        <a class="nav-link" href="/Transactions/Index">
                             <i class="material-icons">dashboard</i>
                             <p>Transtions</p>
                         </a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="/Messages/Index">
+                        <a class="nav-link" href="/Messeges/Index">
                             <i class="material-icons">dashboard</i>
                             <p>Messages</p>
                         </a>
                     </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="/Home/Index">
+                    <li class="nav-item active"  >
+                        <a class="nav-link" asp-action="Logout" >
                             <i class="material-icons">dashboard</i>
                             <p>Logout</p>
                         </a>
                     </li>
+
                     <!-- your sidebar here/Messages/Index -->
                 </ul>
             </div>

@@ -51,6 +51,22 @@ namespace task_two.Controllers
         }
         public IActionResult admin()
         {
+            ViewBag.id = HttpContext.Session.GetInt32("id");
+            ViewBag.usernae_secc = HttpContext.Session.GetString("usernae_secc");
+            return View();
+        }
+        public IActionResult Logout()
+        {
+
+
+            if (HttpContext.Session.GetString("usernae_secc") != null)
+            {
+                HttpContext.Session.Clear();
+                return RedirectToAction("Index", "Home");
+
+            }
+
+
 
             return View();
         }

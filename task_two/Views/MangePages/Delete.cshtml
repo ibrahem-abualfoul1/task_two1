@@ -1,0 +1,52 @@
+﻿@model task_two.Models.MangePage
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>MangePage</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.AboutUs)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AboutUs)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ContactUs)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ContactUs)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.pharmacyName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.pharmacyName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Pharmacylocation)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Pharmacylocation)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.SocialMedia)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SocialMedia)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Delete" class="btn btn-default" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>

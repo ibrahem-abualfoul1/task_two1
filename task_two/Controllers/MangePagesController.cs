@@ -1,87 +1,162 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using task_two.Data;
+using task_two.Models;
+
 
 namespace task_two.Controllers
 {
     public class MangePagesController : Controller
     {
-        // GET: MangePagesController
-        public ActionResult Index()
+        private readonly UserContext _context;
+        private readonly IWebHostEnvironment _hostEnvironment;
+
+        public MangePagesController(UserContext context, IWebHostEnvironment _hostEnvironment)
+        {
+            this._hostEnvironment = _hostEnvironment;
+            _context = context;
+        }
+        public async Task<IActionResult> Index()
+        {
+            ViewBag.id = HttpContext.Session.GetInt32("id");
+            ViewBag.usernae_secc = HttpContext.Session.GetString("usernae_secc");
+            return View(await _context.mangePages.ToListAsync());
+        }
+        // GET: MangePages/Details/5
+        public async Task<IActionResult> Details(int id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var categorie = await _context.mangePages
+
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (categorie == null)
+            {
+                return NotFound();
+            }
+
+            return View(categorie);
+        }
+        // GET: MangePages/Create
+        public IActionResult Create()
         {
             return View();
         }
 
-        // GET: MangePagesController/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
-        // GET: MangePagesController/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: MangePagesController/Create
+        // POST: MangePages/Create
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
+        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public async Task<IActionResult> Create(MangePage categorie)
         {
-            try
+            if (ModelState.IsValid)
             {
+                _context.Add(categorie);
+                await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            catch
-            {
-                return View();
-            }
-        }
 
-        // GET: MangePagesController/Edit/5
-        public ActionResult Edit(int id)
+            return View(categorie);
+        }
+        // GET: MangePages/Edit/5
+        public async Task<IActionResult> Edit(int id)
         {
-            return View();
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var categorie = await _context.mangePages.FindAsync(id);
+            if (categorie == null)
+            {
+                return NotFound();
+            }
+            return View(categorie);
         }
 
-        // POST: MangePagesController/Edit/5
+        // POST: MangePages/Edit/5
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
+        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public async Task<IActionResult> Edit(int id, MangePage categorie)
         {
-            try
+            if (id != categorie.Id)
             {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                
+                    _context.Update(categorie);
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!categorieExists(categorie.Id))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
                 return RedirectToAction(nameof(Index));
             }
-            catch
-            {
-                return View();
-            }
+
+            return View(categorie);
         }
 
-        // GET: MangePagesController/Delete/5
-        public ActionResult Delete(int id)
+        // GET: MangePages/Delete/5
+        public async Task<IActionResult> Delete(int id)
         {
-            return View();
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var categorie = await _context.mangePages
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (categorie == null)
+            {
+                return NotFound();
+            }
+
+            return View(categorie);
         }
 
-        // POST: MangePagesController/Delete/5
-        [HttpPost]
+        // POST: MangePages/Delete/5
+        [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            var categorie = await _context.mangePages.FindAsync(id);
+            _context.mangePages.Remove(categorie);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
+
+
+
+        private bool categorieExists(decimal id)
+        {
+            return _context.mangePages.Any(e => e.Id == id);
         }
     }
 }

@@ -1,0 +1,52 @@
+﻿@model task_two.Models.Messege
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Messege</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NameMessege)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NameMessege)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.SenderEmail)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SenderEmail)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ResivedEmail)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ResivedEmail)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Subject)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Subject)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ContactMessege)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ContactMessege)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="IdMessege" />
+        <input type="submit" value="Delete" class="btn btn-default" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>

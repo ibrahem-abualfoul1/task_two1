@@ -124,11 +124,21 @@ namespace task_two.Controllers
             var modelitems = Tuple.Create<IEnumerable<task_two.Models.Category>, IEnumerable<task_two.Models.Prodact>, IEnumerable<task_two.Models.Messege>, IEnumerable<task_two.Models.MangePage>>(itemCategories, itemprodacts, itemmessege, itemMangePage);
             return View(modelitems);
         }
+       
         public IActionResult Logout()
         {
-         
-            HttpContext.Session.Clear();
-            return RedirectToAction("", "Home");
+           
+
+            if(HttpContext.Session.GetString("usernae_secc") != null)
+            {
+                HttpContext.Session.Clear();
+                return RedirectToAction("Index", "Home");
+
+            }
+
+          
+
+            return View();
         }
         [HttpGet]
         public IActionResult showproudact(int c)

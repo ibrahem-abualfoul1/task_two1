@@ -1,0 +1,60 @@
+﻿@model IEnumerable<task_two.Models.MangePage>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create" hidden>Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.AboutUs)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ContactUs)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.pharmacyName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pharmacylocation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SocialMedia)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.AboutUs)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ContactUs)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.pharmacyName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Pharmacylocation)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SocialMedia)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id" hidden>Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
