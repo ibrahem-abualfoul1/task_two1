@@ -158,6 +158,31 @@ namespace task_two.Controllers
             return View(modelitems);
 
         }
+        [HttpGet]
+        public IActionResult Buy(int c)
+        {
+            ViewBag.id = c;
+            var pro2 = _userContext.prodacts.Where(x => x.IdProdact == c).ToList();
+            return View(pro2);
+        }
+        [HttpPost]
+        public IActionResult Buy(Bill bill , Prodact prodact)
+        {
+            var pro2 = _userContext.prodacts.Where(x => x.IdProdact == prodact.IdProdact).FirstOrDefault();
+            var UserData = HttpContext.Session.GetInt32("id");
+            bill.DateBill = DateTime.Now;
+            _userContext.Add(bill);
+            _userContext.SaveChanges();
+            Transaction tran = new Transaction { idbill = bill.IdBill, NameBill = bill.NameBill, Price = prodact.Price, IdUser = UserData };
+            _userContext.Add(tran);
+           
+            ViewBag.id = HttpContext.Session.GetInt32("id");
+            ViewBag.usernae_secc = HttpContext.Session.GetString("usernae_secc");
+            _userContext.SaveChanges();
+
+            return RedirectToAction("test", "User");
+
+        }
         public IActionResult Profiel()
         {
             var UserData = _userContext.User.SingleOrDefault(x => x.Id == HttpContext.Session.GetInt32("id"));

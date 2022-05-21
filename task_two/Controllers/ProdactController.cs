@@ -31,7 +31,7 @@ namespace task_two.Controllers
             return View(await modelContext.ToListAsync());
         }
         // GET: Productes/Details/5
-        public async Task<IActionResult> Details(int id)
+        public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
             {
@@ -76,7 +76,7 @@ namespace task_two.Controllers
             return View(producte);
         }
         // GET: Productes/Edit/5
-        public async Task<IActionResult> Edit(int id)
+        public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
             {
@@ -132,7 +132,7 @@ namespace task_two.Controllers
         }
 
         // GET: Productes/Delete/5
-        public async Task<IActionResult> Delete(int id)
+        public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
             {

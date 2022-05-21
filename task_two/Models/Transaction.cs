@@ -11,6 +11,10 @@ namespace task_two.Models
         [Key]
         public int IdTransaction { get; set; }
 
+       public int idbill { get; set; }
+        public string NameBill { get; set; }
+        public double Price { get; set; }
+        public int? IdUser { get; set; } 
 
 
     }

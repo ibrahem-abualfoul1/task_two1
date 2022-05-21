@@ -26,12 +26,13 @@ namespace task_two.Controllers
         }
         public async Task<IActionResult> Index()
         {
+
             ViewBag.id = HttpContext.Session.GetInt32("id");
             ViewBag.usernae_secc = HttpContext.Session.GetString("usernae_secc");
             return View(await _context.transactions.ToListAsync());
         }
         // GET: MangePages/Details/5
-        public async Task<IActionResult> Details(int id)
+        public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
             {
@@ -71,7 +72,7 @@ namespace task_two.Controllers
             return View(categorie);
         }
         // GET: Testimonial/Edit/5
-        public async Task<IActionResult> Edit(int id)
+        public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
             {
@@ -124,9 +125,10 @@ namespace task_two.Controllers
         }
 
         // GET: Testimonial/Delete/5
-        public async Task<IActionResult> Delete(int id)
+        public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null)
+            
+                if (id == null)
             {
                 return NotFound();
             }

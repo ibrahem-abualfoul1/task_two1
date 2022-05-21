@@ -36,13 +36,7 @@ namespace task_two.Controllers
             var modelitems = Tuple.Create<IEnumerable<task_two.Models.Category>, IEnumerable<task_two.Models.Prodact> , IEnumerable<task_two.Models.Messege> , IEnumerable<task_two.Models.MangePage>>(itemCategories, itemprodacts, itemmessege , itemMangePage);
             return View(modelitems);
         }
-        [HttpGet]
-        public IActionResult showproudact(int c)
-        {
-            ViewBag.id = c;
-            var pro2 = _context.prodacts.Where(x => x.IdCategory == c).ToList();
-            return View(pro2);
-        }
+      
         public IActionResult About_us()
         {
             ViewBag.id = HttpContext.Session.GetInt32("id");
@@ -70,6 +64,13 @@ namespace task_two.Controllers
 
             return View();
         }
+        [HttpGet]
+        public IActionResult showproudact(int c)
+        {
+            ViewBag.id = c;
+            var pro2 = _context.prodacts.Where(x => x.IdCategory == c).ToList();
+            return View(pro2);
+        }
         public IActionResult showproudact()
         {
             var itemprodacts = _context.prodacts.ToList();
@@ -77,6 +78,7 @@ namespace task_two.Controllers
             return View(modelitems);
             
         }
+     
         public IActionResult _Clients()
         {
             return View();
@@ -92,7 +94,7 @@ namespace task_two.Controllers
             _context.SaveChanges();
             return View();
         }
-       
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

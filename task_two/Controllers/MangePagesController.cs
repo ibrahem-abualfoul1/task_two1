@@ -31,7 +31,7 @@ namespace task_two.Controllers
             return View(await _context.mangePages.ToListAsync());
         }
         // GET: MangePages/Details/5
-        public async Task<IActionResult> Details(int id)
+        public async Task<IActionResult> Details(int? id )
         {
             if (id == null)
             {
@@ -71,7 +71,7 @@ namespace task_two.Controllers
             return View(categorie);
         }
         // GET: MangePages/Edit/5
-        public async Task<IActionResult> Edit(int id)
+        public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
             {
@@ -124,7 +124,7 @@ namespace task_two.Controllers
         }
 
         // GET: MangePages/Delete/5
-        public async Task<IActionResult> Delete(int id)
+        public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
             {
