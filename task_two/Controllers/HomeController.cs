@@ -27,11 +27,13 @@ namespace task_two.Controllers
         {
             ViewBag.id = HttpContext.Session.GetInt32("id");
             ViewBag.usernae_secc = HttpContext.Session.GetString("usernae_secc");
+
             var itemCategories = _context.categories.ToList();
+            var itemMangePage = _context.mangePages.ToList();
             var itemprodacts = _context.prodacts.ToList();
             var itemmessege = _context.messeges.ToList();
 
-            var modelitems = Tuple.Create<IEnumerable<task_two.Models.Category>, IEnumerable<task_two.Models.Prodact> , IEnumerable<task_two.Models.Messege>>(itemCategories, itemprodacts, itemmessege);
+            var modelitems = Tuple.Create<IEnumerable<task_two.Models.Category>, IEnumerable<task_two.Models.Prodact> , IEnumerable<task_two.Models.Messege> , IEnumerable<task_two.Models.MangePage>>(itemCategories, itemprodacts, itemmessege , itemMangePage);
             return View(modelitems);
         }
         [HttpGet]
@@ -43,7 +45,8 @@ namespace task_two.Controllers
         }
         public IActionResult About_us()
         {
-
+            ViewBag.id = HttpContext.Session.GetInt32("id");
+            ViewBag.usernae_secc = HttpContext.Session.GetString("usernae_secc");
             return View();
         }
         public IActionResult admin()

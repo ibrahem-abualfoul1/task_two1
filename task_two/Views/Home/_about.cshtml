@@ -1,4 +1,6 @@
-﻿<style>
+﻿@model Tuple<IEnumerable<task_two.Models.Category>, IEnumerable<task_two.Models.Prodact>, IEnumerable<task_two.Models.Messege>
+                    , IEnumerable<task_two.Models.MangePage>>
+<style>
     .col-md-5 {
         width: 26%;
     }
@@ -13,7 +15,7 @@
     function read_more() {
         var read_moredots = document.getElementById("read_moredots");
         var read_moremoreText = document.getElementById("read_moremore");
-        var read_morebtnText = document.getElementById( "read_moremyBtn");
+        var read_morebtnText = document.getElementById("read_moremyBtn");
 
         if (read_moredots.style.display === "none") {
             read_moredots.style.display = "inline";
@@ -25,7 +27,7 @@
             read_moremoreText.style.display = "inline";
         }
     }
-    
+
 
 </script>
 <section id="about">
@@ -45,7 +47,9 @@
                     <p class="lead">
                         <strong> Hello everybody</strong>
                         <br />
-                        Welcome to <span class="test">Dentaladvisor</span>                     <br />
+                        Welcome to @foreach (var item in Model.Item4)
+                        {
+                    <span class="test">@item.pharmacyName</span>}                <br />
 
 
                         My name is <span class="test">
