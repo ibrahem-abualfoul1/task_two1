@@ -1,5 +1,5 @@
-﻿@model Tuple< IEnumerable<task_two.Models.Category>, IEnumerable<task_two.Models.Prodact>, IEnumerable<task_two.Models.Messege> , IEnumerable<task_two.Models.MangePage>>
-
+﻿@model Tuple<IEnumerable<task_two.Models.Category>, IEnumerable<task_two.Models.Prodact>, IEnumerable<task_two.Models.Messege>
+                            , IEnumerable<task_two.Models.MangePage>>
 @{ ViewData["Title"] = "Home Page"; }
 @{ var name = ViewBag.usernae_secc; }
 
@@ -29,14 +29,13 @@
     <partial name="_Doctors" />
 
 
-    <partial name="_Map" />
 
 
 
     <partial name="_Action" />
 
-
-    <partial name="_gallary" />
+    <br />
+    <partial name="_Map" />
 
 
     <partial name="_testimonial" />

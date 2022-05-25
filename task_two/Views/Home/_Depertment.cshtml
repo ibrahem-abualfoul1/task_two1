@@ -1,5 +1,5 @@
 ﻿@model Tuple<IEnumerable<task_two.Models.Category>, IEnumerable<task_two.Models.Prodact>, IEnumerable<task_two.Models.Messege>
-                , IEnumerable<task_two.Models.MangePage>>
+                            , IEnumerable<task_two.Models.MangePage>>
 <script>
     function Cosmetic() {
         var dots = document.getElementById("Cosmeticdots");
@@ -103,40 +103,40 @@
                 {
                     if (item.IdCategory == 1)
                     {
-    <div class="col-xs-12 col-sm-6 col-md-4 mb-30">
-        <div class="p-20 bg-white">
-            <img src=@Url.Content("~/Image/" + item.UrlCategory) asp-append-version="true">
-            <h3 class="">
-                <a href="#">
-                    @item.NameCategory
-                </a>
-            </h3>
-            <p class="">
-                @item.Describtion
-            </p>
-            <a class="btn btn-flat btn-theme-colored mt-15 text-theme-color-2" href="~/home/showproudact">Read More</a>
-        </div>
-    </div>}
-else
-{
+                        <div class="col-xs-12 col-sm-6 col-md-4 mb-30">
+                            <div class="p-20 bg-white">
+                                <img src=@Url.Content("~/Image/" + item.UrlCategory) asp-append-version="true">
+                                <h3 class="">
+                                    <a href="#">
+                                        @item.NameCategory
+                                    </a>
+                                </h3>
+                                <p class="">
+                                    @item.Describtion
+                                </p>
+                                <a class="btn btn-flat btn-theme-colored mt-15 text-theme-color-2" href="~/home/showproudact">Read More</a>
+                            </div>
+                        </div>}
+                    else
+                    {
 
-<div class="col-xs-12 col-sm-6 col-md-4 mb-30">
-    <div class="p-20 bg-white">
-        <img src=@Url.Content("~/Image/" + item.UrlCategory) asp-append-version="true">
-        <h3 class="">
-            <a href="#">
-                @item.NameCategory
-            </a>
-        </h3>
-        <p class="">
-            @item.Describtion
-        </p>
-        <a class="btn btn-flat btn-theme-colored mt-15 text-theme-color-2" asp-action="showproudact" asp-route-c="@item.IdCategory">Read More</a>
-    </div>
-</div>}
+                        <div class="col-xs-12 col-sm-6 col-md-4 mb-30">
+                            <div class="p-20 bg-white">
+                                <img src=@Url.Content("~/Image/" + item.UrlCategory) asp-append-version="true">
+                                <h3 class="">
+                                    <a href="#">
+                                        @item.NameCategory
+                                    </a>
+                                </h3>
+                                <p class="">
+                                    @item.Describtion
+                                </p>
+                                <a class="btn btn-flat btn-theme-colored mt-15 text-theme-color-2" asp-action="showproudact" asp-route-c="@item.IdCategory">Read More</a>
+                            </div>
+                        </div>}
 
 
-            }
+                }
                 @*<div class="col-xs-12 col-sm-6 col-md-4 mb-30">
                             <div class="p-20 bg-white">
                                 <img src="~/assert/images/doctors/370x270.jpg" alt="">

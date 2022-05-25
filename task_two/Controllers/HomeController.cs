@@ -78,7 +78,12 @@ namespace task_two.Controllers
             return View(modelitems);
             
         }
-     
+        public IActionResult _testimonial()
+        {
+            ViewBag.id = HttpContext.Session.GetInt32("id");
+            ViewBag.usernae_secc = HttpContext.Session.GetString("usernae_secc");
+            return View(_context.testimonials.ToList());
+        }
         public IActionResult _Clients()
         {
             return View();
