@@ -1,49 +1,51 @@
 ﻿@model Tuple<IEnumerable<task_two.Models.Category>, IEnumerable<task_two.Models.Prodact>, IEnumerable<task_two.Models.Messege>
-                            , IEnumerable<task_two.Models.MangePage>>
+                                                , IEnumerable<task_two.Models.MangePage>, IEnumerable<task_two.Models.Testimonial>>
 @{ ViewData["Title"] = "Home Page"; }
-@{ var name = ViewBag.usernae_secc; }
+@{ var name = ViewBag.usernae_secc;
+    var roleid = ViewBag.RoleId;}
+
+@if (roleid == "\0\0\0\u0002" || roleid == null)
+{
+    <div class="main-content">
 
 
-<div class="main-content">
+        <partial name="home" />
+
+        <partial name="_HomeBox" />
+
+        <partial name="_about" />
+
+        <partial name="_Certificates" />
 
 
-    <partial name="home" />
-
-    <partial name="_HomeBox" />
-
-    <partial name="_about" />
-
-    <partial name="_Certificates" />
+        <partial name="_Services" />
 
 
-    <partial name="_Services" />
+        <partial name="_Funfact" />
 
 
-    <partial name="_Funfact" />
-
-
-    <partial name="_Depertment" />
-
-
-
-    <partial name="_Doctors" />
-
+        <partial name="_Depertment" />
 
 
 
-
-    <partial name="_Action" />
-
-    <br />
-    <partial name="_Map" />
+        <partial name="_Doctors" />
 
 
-    <partial name="_testimonial" />
 
 
-    <partial name="_Blog" />
+
+        <partial name="_Action" />
+
+        <br />
+        <partial name="_Map" />
 
 
-    <partial name="_Clients" />
+        <partial name="_testimonial" />
 
-</div>
+
+        <partial name="_Blog" />
+
+
+
+
+    </div>}

@@ -1,5 +1,9 @@
-﻿@model Tuple<IEnumerable<task_two.Models.Category>, IEnumerable<task_two.Models.Prodact>, IEnumerable<task_two.Models.Messege>
-                                , IEnumerable<task_two.Models.MangePage>, IEnumerable<task_two.Models.Testimonial>>
+﻿
+@{
+    ViewData["Title"] = "Contact_Us";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@{ var name = ViewBag.usernae_secc; }
 <section class="clients bg-theme-colored">
 
 
@@ -11,7 +15,7 @@
             <div class="row">
                 <div class="col-lg-8 col-sm-12">
                     <div class="contact-form-right">
-                        <form asp-controller="Home" asp-action="_Clients">
+                        <form asp-controller="Home" asp-action="Contact_Us">
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
@@ -62,3 +66,4 @@
     </div>                    <!-- End Cart -->
 
 </section>
+

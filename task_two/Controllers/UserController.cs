@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Cryptography.KeyDerivation;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cryptography.KeyDerivation;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
@@ -89,6 +90,7 @@ namespace task_two.Controllers
         {
             const string id = "id";
             const string usernae_secc = "usernae_secc";
+            const string RoleId = "RoleId";
           
             var auth = _userContext.User.Where(x => x.UerName == UserName && x.Password == Password).SingleOrDefault();
             if (auth != null)
@@ -97,31 +99,47 @@ namespace task_two.Controllers
                 {
                     case 1:
                         HttpContext.Session.SetInt32(id, Convert.ToInt32(auth.Id.ToString()));
+                        HttpContext.Session.SetInt32(RoleId, Convert.ToInt32(auth.IdRole.ToString()));
                         HttpContext.Session.SetString(usernae_secc, auth.UerName.ToString());
                         return RedirectToAction("admin", "Home");
 
                     case 2:
+
+                        HttpContext.Session.SetInt32(RoleId, Convert.ToInt32(auth.IdRole.ToString()));
                         HttpContext.Session.SetInt32(id, Convert.ToInt32(auth.Id.ToString()));
                         HttpContext.Session.SetString(usernae_secc, auth.UerName.ToString());
                         return RedirectToAction("Test", "User");
 
               
                 }
+
                
-                return RedirectToAction("Test", "User");
+
             }
+            else
+            {
+
+                TempData["login"] = "failed login , please again login.";
+                return RedirectToAction("login", "user");
+            }
+
+           
+
+
             return View();
         }
         public IActionResult Test()
         {
             ViewBag.id = HttpContext.Session.GetInt32("id");
             ViewBag.usernae_secc = HttpContext.Session.GetString("usernae_secc");
+            ViewBag.RoleId = HttpContext.Session.GetString("RoleId");
             var itemCategories = _userContext.categories.ToList();
             var itemMangePage = _userContext.mangePages.ToList();
             var itemprodacts = _userContext.prodacts.ToList();
             var itemmessege = _userContext.messeges.ToList();
+            var itemtestmonel = _userContext.testimonials.ToList();
 
-            var modelitems = Tuple.Create<IEnumerable<task_two.Models.Category>, IEnumerable<task_two.Models.Prodact>, IEnumerable<task_two.Models.Messege>, IEnumerable<task_two.Models.MangePage>>(itemCategories, itemprodacts, itemmessege, itemMangePage);
+            var modelitems = Tuple.Create<IEnumerable<task_two.Models.Category>, IEnumerable<task_two.Models.Prodact>, IEnumerable<task_two.Models.Messege>, IEnumerable<task_two.Models.MangePage>, IEnumerable<task_two.Models.Testimonial>>(itemCategories, itemprodacts, itemmessege, itemMangePage, itemtestmonel);
             return View(modelitems);
         }
        
@@ -145,6 +163,7 @@ namespace task_two.Controllers
         {
             ViewBag.id = HttpContext.Session.GetInt32("id");
             ViewBag.usernae_secc = HttpContext.Session.GetString("usernae_secc");
+            ViewBag.RoleId = HttpContext.Session.GetString("RoleId");
             ViewBag.id = c;
             var pro2 = _userContext.prodacts.Where(x => x.IdCategory == c).ToList();
             return View(pro2);
@@ -153,6 +172,8 @@ namespace task_two.Controllers
         {
             ViewBag.id = HttpContext.Session.GetInt32("id");
             ViewBag.usernae_secc = HttpContext.Session.GetString("usernae_secc");
+            ViewBag.RoleId = HttpContext.Session.GetString("RoleId");
+
             var itemprodacts = _userContext.prodacts.ToList();
             var modelitems = Tuple.Create<IEnumerable<task_two.Models.Prodact>>(itemprodacts);
             return View(modelitems);
@@ -183,11 +204,13 @@ namespace task_two.Controllers
             return RedirectToAction("test", "User");
 
         }
+    
         public IActionResult Profiel()
         {
             var UserData = _userContext.User.SingleOrDefault(x => x.Id == HttpContext.Session.GetInt32("id"));
             ViewBag.id = HttpContext.Session.GetInt32("id");
             ViewBag.usernae_secc = HttpContext.Session.GetString("usernae_secc");
+            ViewBag.RoleId = HttpContext.Session.GetString("RoleId");
 
             ViewBag.ProPic = HttpContext.Session.GetString("ProPic");
             return View(UserData);
@@ -198,7 +221,8 @@ namespace task_two.Controllers
             Account UserData = _userContext.User.SingleOrDefault(x => x.Id == HttpContext.Session.GetInt32("id"));
             ViewBag.id = HttpContext.Session.GetInt32("id");
             ViewBag.usernae_secc = HttpContext.Session.GetString("usernae_secc");
-          
+            ViewBag.RoleId = HttpContext.Session.GetString("RoleId");
+
             ViewBag.ProPic = HttpContext.Session.GetString("ProPic");
             UserData.Name = FName;
             UserData.UerName = LName;

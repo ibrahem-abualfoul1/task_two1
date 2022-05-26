@@ -27,6 +27,8 @@ namespace task_two.Controllers
         {
             ViewBag.id = HttpContext.Session.GetInt32("id");
             ViewBag.usernae_secc = HttpContext.Session.GetString("usernae_secc");
+            ViewBag.RoleId = HttpContext.Session.GetString("RoleId");
+
             var modelContext = _context.prodacts.Include(p => p.Catigory);
             return View(await modelContext.ToListAsync());
         }

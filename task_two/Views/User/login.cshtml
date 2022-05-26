@@ -1,9 +1,7 @@
 ﻿@model task_two.Models.Account
 
-@{
-    ViewData["Title"] = "login";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
+@{ ViewData["Title"] = "login";
+    Layout = "~/Views/Shared/_Layout.cshtml"; }
 
 <h2>login</h2>
 
@@ -38,9 +36,10 @@
             </div>
         </div>
     </div>
+
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+@if (TempData["login"] != null)
+{
+<script>alert('@TempData["login"]');</script>}
 
