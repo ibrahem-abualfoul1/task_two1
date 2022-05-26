@@ -51,7 +51,7 @@ namespace task_two.Controllers
                 var chek = _userContext.User.Where(x => x.UerName == user.UerName && x.Email == user.Email && x.Phone_number == user.Phone_number).FirstOrDefault();
                 if (null == chek)
                 {
-                    user.IdRole = 2;
+                    user.RoleId = 2;
                     user.DateRegister = DateTime.Now;
 
                     string wwwRootPath = _hostEnvironment.WebRootPath;
@@ -86,36 +86,40 @@ namespace task_two.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult login(string UserName , string Password)
+        [ValidateAntiForgeryToken]
+
+        public async Task<IActionResult> login(string UserName , string Password)
         {
             const string id = "id";
             const string usernae_secc = "usernae_secc";
             const string RoleId = "RoleId";
+           
+                var auth = _userContext.User.Where(x => x.UerName == UserName && x.Password == Password).SingleOrDefault();
           
-            var auth = _userContext.User.Where(x => x.UerName == UserName && x.Password == Password).SingleOrDefault();
-            if (auth != null)
-            {
-                switch (auth.IdRole)
+                if (auth != null)
                 {
-                    case 1:
-                        HttpContext.Session.SetInt32(id, Convert.ToInt32(auth.Id.ToString()));
-                        HttpContext.Session.SetInt32(RoleId, Convert.ToInt32(auth.IdRole.ToString()));
-                        HttpContext.Session.SetString(usernae_secc, auth.UerName.ToString());
-                        return RedirectToAction("admin", "Home");
+                    switch (auth.RoleId)
+                    {
+                        case 1:
+                            HttpContext.Session.SetInt32(id, Convert.ToInt32(auth.Id.ToString()));
+                            HttpContext.Session.SetInt32(RoleId, Convert.ToInt32(auth.RoleId.ToString()));
+                            HttpContext.Session.SetString(usernae_secc, auth.UerName.ToString());
+                            return RedirectToAction("admin", "Home");
 
-                    case 2:
+                        case 2:
 
-                        HttpContext.Session.SetInt32(RoleId, Convert.ToInt32(auth.IdRole.ToString()));
-                        HttpContext.Session.SetInt32(id, Convert.ToInt32(auth.Id.ToString()));
-                        HttpContext.Session.SetString(usernae_secc, auth.UerName.ToString());
-                        return RedirectToAction("Test", "User");
+                            HttpContext.Session.SetInt32(RoleId, Convert.ToInt32(auth.RoleId.ToString()));
+                            HttpContext.Session.SetInt32(id, Convert.ToInt32(auth.Id.ToString()));
+                            HttpContext.Session.SetString(usernae_secc, auth.UerName.ToString());
+                            return RedirectToAction("Test", "User");
 
-              
+
+                    }
+
+
+
                 }
-
-               
-
-            }
+            
             else
             {
 

@@ -108,6 +108,26 @@ namespace task_two.Controllers
             _context.SaveChanges();
             return View();
         }
+        [HttpPost]
+        public IActionResult Creattest(Testimonial test)
+        {
+
+            ViewBag.id = HttpContext.Session.GetInt32("id");
+            ViewBag.usernae_secc = HttpContext.Session.GetString("usernae_secc");
+            ViewBag.RoleId = HttpContext.Session.GetString("RoleId");
+            if (ModelState.IsValid)
+            {
+                var UserData = HttpContext.Session.GetInt32("id");
+                test.Id_regester = UserData;
+                test.active = false;
+                _context.testimonials.Add(test);
+                _context.SaveChanges();
+                  return RedirectToAction("test", "User");
+            }
+           
+            return View();
+        }
+
 
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

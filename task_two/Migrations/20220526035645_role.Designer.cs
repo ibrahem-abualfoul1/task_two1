@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using task_two.Data;
 
 namespace task_two.Migrations
 {
     [DbContext(typeof(UserContext))]
-    partial class UserContextModelSnapshot : ModelSnapshot
+    [Migration("20220526035645_role")]
+    partial class role
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -184,6 +186,9 @@ namespace task_two.Migrations
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
+                    b.Property<int?>("CatigoryIdCategory")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("DateProdact")
                         .HasColumnType("datetime2");
 
@@ -204,7 +209,7 @@ namespace task_two.Migrations
 
                     b.HasKey("IdProdact");
 
-                    b.HasIndex("IdCategory");
+                    b.HasIndex("CatigoryIdCategory");
 
                     b.ToTable("prodacts");
                 });
@@ -234,14 +239,8 @@ namespace task_two.Migrations
                     b.Property<string>("ContactText")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("Id_regester")
-                        .HasColumnType("int");
-
                     b.Property<int>("Reviwe")
                         .HasColumnType("int");
-
-                    b.Property<bool>("active")
-                        .HasColumnType("bit");
 
                     b.HasKey("Id");
 
@@ -285,13 +284,11 @@ namespace task_two.Migrations
 
             modelBuilder.Entity("task_two.Models.Prodact", b =>
                 {
-                    b.HasOne("task_two.Models.Category", "Category")
+                    b.HasOne("task_two.Models.Category", "Catigory")
                         .WithMany("Productes")
-                        .HasForeignKey("IdCategory")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("CatigoryIdCategory");
 
-                    b.Navigation("Category");
+                    b.Navigation("Catigory");
                 });
 
             modelBuilder.Entity("task_two.Models.Category", b =>
