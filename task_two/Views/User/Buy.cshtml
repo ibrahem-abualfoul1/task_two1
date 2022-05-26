@@ -1,60 +1,82 @@
-﻿@model Tuple<IEnumerable<task_two.Models.Cart>, IEnumerable<task_two.Models.Prodact>>
+﻿@model IEnumerable<task_two.Models.Prodact>
 @{
     ViewData["Title"] = "Buy";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+@{
+    var a = ViewBag.id;
+
+}
 
 <h2>Buy</h2>
+<div class="contact-box-main">
+    <div class="container">
 
-@{ var id = ViewBag.id; }
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                id
-            </th>
-            <th>
-                NameProdact
-            </th>
-            <th>
-                Units
-            </th>
-            <th>
-                Price
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model.Item1)
-        {
-            @if (item.id_user == id)
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.id)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.CartProdactTrans.NameProdact)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.CartProdactTrans.Units)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.CartProdactTrans.Price)
-                    </td>
+        <div class="row">
+            <div class="col-lg-8 col-sm-12">
+                <div class="contact-form-right">
 
-                </tr>
-            }
-            else
-            {
+                    <form asp-controller="User" asp-action="Buy" method="post">
+                        @foreach (var item in Model)
+                        {
+                            @if (item.IdProdact == @a)
+                            {
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" id="IdProdact" name="IdProdact" placeholder="enter balanc" value="@a" required data-error="Please enter your name" readonly>
+                                            <div class="help-block with-errors"></div>
+                                        </div>
+                                    </div>
 
-            <td>
-                <h1>null</h1>
-            </td>
-        }}
-        <td>
-            <a class="btn btn-flat btn-theme-colored mt-15 text-theme-color-2" asp-action="buy" asp-route-c="@id">Read More</a>
-        </td>
-        </tbody>
-    </table>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" id="Price" name="Price" value="@item.Price" required data-error="Please enter your name" readonly>
+                                            <div class="help-block with-errors"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" id="NameProdact" name="NameProdact" value="@item.NameProdact" required data-error="Please enter your name" readonly>
+                                            <div class="help-block with-errors"></div>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            }
+
+                        }
+
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <input type="text" placeholder="NameBill" id="NameBill" class="form-control" name="NameBill" required data-error="Please enter your email">
+                                <div class="help-block with-errors"></div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <input type="text" placeholder="PhoneNumber" id="PhoneNumber" class="form-control" name="PhoneNumber" required data-error="Please enter your email">
+                                <div class="help-block with-errors"></div>
+                            </div>
+                        </div> 
+                      
+
+                        <div class="submit-button text-center">
+                            <button class="btn hvr-hover" id="submit" type="submit">buy</button>
+
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

@@ -16,25 +16,13 @@
             <input type="hidden" asp-for="Id" />
             <div class="form-group">
                 <label asp-for="ContactText" class="control-label"></label>
-                <input asp-for="ContactText" class="form-control" readonly />
+                <input asp-for="ContactText" class="form-control" />
                 <span asp-validation-for="ContactText" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Reviwe" class="control-label"></label>
-                <input asp-for="Reviwe" class="form-control" readonly/>
+                <input asp-for="Reviwe" class="form-control" />
                 <span asp-validation-for="Reviwe" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Id_regester" class="control-label" ></label>
-                <input asp-for="Id_regester" class="form-control" readonly />
-                <span asp-validation-for="Id_regester" class="text-danger"></span>
-            </div> 
-            <div class="form-group">
-                <label asp-for="active">Available:</label>
-                <select class="form-control" id="active">
-                    <option value="False">No</option>
-                    <option value="True">Yes</option>
-                </select>
             </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-default" />

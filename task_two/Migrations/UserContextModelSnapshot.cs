@@ -40,6 +40,10 @@ namespace task_two.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("IdRole")
+                        .HasColumnType("int")
+                        .HasColumnName("IdRole");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -50,9 +54,6 @@ namespace task_two.Migrations
                     b.Property<string>("Phone_number")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("RoleId")
-                        .HasColumnType("int");
 
                     b.Property<string>("UerName")
                         .IsRequired()
@@ -65,8 +66,6 @@ namespace task_two.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("RoleId");
 
                     b.ToTable("User");
                 });
@@ -81,52 +80,21 @@ namespace task_two.Migrations
                     b.Property<DateTime>("DateBill")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("IdProdactTransIdProdact")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("Id_regester")
+                    b.Property<int>("Discounte")
                         .HasColumnType("int");
 
                     b.Property<string>("NameBill")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Numberitems")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("PhoneNumber")
                         .HasColumnType("int");
 
-                    b.Property<double>("Price")
-                        .HasColumnType("float");
-
-                    b.Property<bool>("activebill")
-                        .HasColumnType("bit");
-
                     b.HasKey("IdBill");
 
-                    b.HasIndex("IdProdactTransIdProdact");
-
                     b.ToTable("bills");
-                });
-
-            modelBuilder.Entity("task_two.Models.Cart", b =>
-                {
-                    b.Property<int>("id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .UseIdentityColumn();
-
-                    b.Property<int?>("CartProdactTransIdProdact")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("id_user")
-                        .HasColumnType("int");
-
-                    b.Property<bool>("order")
-                        .HasColumnType("bit");
-
-                    b.HasKey("id");
-
-                    b.HasIndex("CartProdactTransIdProdact");
-
-                    b.ToTable("carts");
                 });
 
             modelBuilder.Entity("task_two.Models.Category", b =>
@@ -177,6 +145,30 @@ namespace task_two.Migrations
                     b.ToTable("mangePages");
                 });
 
+            modelBuilder.Entity("task_two.Models.MapsAddresses", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<string>("AddressName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<double>("Lat")
+                        .HasColumnType("float");
+
+                    b.Property<double>("Long")
+                        .HasColumnType("float");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("mapsAddresses");
+                });
+
             modelBuilder.Entity("task_two.Models.Messege", b =>
                 {
                     b.Property<int>("IdMessege")
@@ -185,22 +177,18 @@ namespace task_two.Migrations
                         .UseIdentityColumn();
 
                     b.Property<string>("ContactMessege")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("NameMessege")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ResivedEmail")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("SenderEmail")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Subject")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("IdMessege");
@@ -214,6 +202,9 @@ namespace task_two.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .UseIdentityColumn();
+
+                    b.Property<int?>("CatigoryIdCategory")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("DateProdact")
                         .HasColumnType("datetime2");
@@ -235,7 +226,7 @@ namespace task_two.Migrations
 
                     b.HasKey("IdProdact");
 
-                    b.HasIndex("IdCategory");
+                    b.HasIndex("CatigoryIdCategory");
 
                     b.ToTable("prodacts");
                 });
@@ -265,14 +256,8 @@ namespace task_two.Migrations
                     b.Property<string>("ContactText")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("Id_regester")
-                        .HasColumnType("int");
-
                     b.Property<int>("Reviwe")
                         .HasColumnType("int");
-
-                    b.Property<bool>("active")
-                        .HasColumnType("bit");
 
                     b.HasKey("Id");
 
@@ -286,12 +271,6 @@ namespace task_two.Migrations
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
-                    b.Property<int?>("AccountidId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("DateBill")
-                        .HasColumnType("datetime2");
-
                     b.Property<int?>("IdUser")
                         .HasColumnType("int");
 
@@ -301,66 +280,21 @@ namespace task_two.Migrations
                     b.Property<double>("Price")
                         .HasColumnType("float");
 
-                    b.Property<bool>("activebill")
-                        .HasColumnType("bit");
-
                     b.Property<int>("idbill")
                         .HasColumnType("int");
 
                     b.HasKey("IdTransaction");
 
-                    b.HasIndex("AccountidId");
-
                     b.ToTable("transactions");
-                });
-
-            modelBuilder.Entity("task_two.Models.Account", b =>
-                {
-                    b.HasOne("task_two.Models.Role", "RoleTrans")
-                        .WithMany()
-                        .HasForeignKey("RoleId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("RoleTrans");
-                });
-
-            modelBuilder.Entity("task_two.Models.Bill", b =>
-                {
-                    b.HasOne("task_two.Models.Prodact", "IdProdactTrans")
-                        .WithMany()
-                        .HasForeignKey("IdProdactTransIdProdact");
-
-                    b.Navigation("IdProdactTrans");
-                });
-
-            modelBuilder.Entity("task_two.Models.Cart", b =>
-                {
-                    b.HasOne("task_two.Models.Prodact", "CartProdactTrans")
-                        .WithMany()
-                        .HasForeignKey("CartProdactTransIdProdact");
-
-                    b.Navigation("CartProdactTrans");
                 });
 
             modelBuilder.Entity("task_two.Models.Prodact", b =>
                 {
-                    b.HasOne("task_two.Models.Category", "Category")
+                    b.HasOne("task_two.Models.Category", "Catigory")
                         .WithMany("Productes")
-                        .HasForeignKey("IdCategory")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("CatigoryIdCategory");
 
-                    b.Navigation("Category");
-                });
-
-            modelBuilder.Entity("task_two.Models.Transaction", b =>
-                {
-                    b.HasOne("task_two.Models.Account", "Accountid")
-                        .WithMany()
-                        .HasForeignKey("AccountidId");
-
-                    b.Navigation("Accountid");
+                    b.Navigation("Catigory");
                 });
 
             modelBuilder.Entity("task_two.Models.Category", b =>
