@@ -25,7 +25,6 @@ namespace task_two.Models
         public virtual Category Category { get; set; }
 
 
-        public virtual ICollection<Bill> Bills { get; set; }
 
     }
 }

@@ -24,6 +24,7 @@ namespace task_two.Data
         public DbSet<Bill> bills { get; set; }
         public DbSet<Role> roles { get; set; }
         public DbSet<Testimonial> testimonials { get; set; }
+        public DbSet<Cart> carts { get; set; }
         public DbSet<Transaction> transactions { get; set; }
     }
 }

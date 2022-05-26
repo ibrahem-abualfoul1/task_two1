@@ -132,6 +132,7 @@ namespace task_two.Controllers
 
             return View();
         }
+
         public IActionResult Test()
         {
             ViewBag.id = HttpContext.Session.GetInt32("id");
@@ -142,6 +143,8 @@ namespace task_two.Controllers
             var itemprodacts = _userContext.prodacts.ToList();
             var itemmessege = _userContext.messeges.ToList();
             var itemtestmonel = _userContext.testimonials.ToList();
+            
+            
 
             var modelitems = Tuple.Create<IEnumerable<task_two.Models.Category>, IEnumerable<task_two.Models.Prodact>, IEnumerable<task_two.Models.Messege>, IEnumerable<task_two.Models.MangePage>, IEnumerable<task_two.Models.Testimonial>>(itemCategories, itemprodacts, itemmessege, itemMangePage, itemtestmonel);
             return View(modelitems);
@@ -183,32 +186,7 @@ namespace task_two.Controllers
             return View(modelitems);
 
         }
-        [HttpGet]
-        public IActionResult Buy(int c)
-        {
-            ViewBag.id = c;
-            var pro2 = _userContext.prodacts.Where(x => x.IdProdact == c).ToList();
-            return View(pro2);
-        }
-        [HttpPost]
-        public IActionResult Buy(Bill bill , Prodact prodact)
-        {
-            var pro2 = _userContext.prodacts.Where(x => x.IdProdact == prodact.IdProdact).FirstOrDefault();
-            var UserData = HttpContext.Session.GetInt32("id");
-            bill.DateBill = DateTime.Now;
-            _userContext.Add(bill);
-            _userContext.SaveChanges();
-            Transaction tran = new Transaction { idbill = bill.IdBill, NameBill = bill.NameBill, Price = prodact.Price, IdUser = UserData };
-            _userContext.Add(tran);
-           
-            ViewBag.id = HttpContext.Session.GetInt32("id");
-            ViewBag.usernae_secc = HttpContext.Session.GetString("usernae_secc");
-            _userContext.SaveChanges();
-
-            return RedirectToAction("test", "User");
-
-        }
-    
+      
         public IActionResult Profiel()
         {
             var UserData = _userContext.User.SingleOrDefault(x => x.Id == HttpContext.Session.GetInt32("id"));
@@ -238,6 +216,110 @@ namespace task_two.Controllers
             _userContext.SaveChanges();
             return View(UserData);
         }
-      
+        [HttpGet]
+        public IActionResult Cart(Cart cart)
+        {
+            ViewBag.id = HttpContext.Session.GetInt32("id");
+            ViewBag.usernae_secc = HttpContext.Session.GetString("usernae_secc");
+            var UserData = HttpContext.Session.GetInt32("id");
+            ViewBag.RoleId = HttpContext.Session.GetString("RoleId");
+            cart.id_user = UserData;
+            var count = _userContext.carts.Where(x => x.id_user == cart.id_user);
+            var itemprodacts = _userContext.prodacts.ToList();
+            var itemcart = _userContext.carts.ToList();
+            var modelitems = Tuple.Create<IEnumerable<task_two.Models.Prodact>,IEnumerable<task_two.Models.Cart>>(itemprodacts,itemcart);
+
+            return View(modelitems);
+        }
+
+        [HttpGet]
+        public IActionResult AddToCart(int c)
+        {
+            ViewBag.id = c;
+            var pro2 = _userContext.prodacts.Where(x => x.IdProdact == c ).ToList();
+            var itemprodacts = _userContext.prodacts.ToList();
+            var itemcart = _userContext.carts.ToList();
+            var modelitems = Tuple.Create<IEnumerable<task_two.Models.Prodact>, IEnumerable<task_two.Models.Cart>>(itemprodacts, itemcart);
+
+            return View(modelitems);
+           
+        }
+        [HttpPost]
+        public IActionResult AddToCart(Cart cart, Prodact prodact)
+        {
+            var pro2 = _userContext.prodacts.Where(x => x.IdProdact == prodact.IdProdact).FirstOrDefault();
+            var UserData = HttpContext.Session.GetInt32("id");
+            cart.id_user = UserData;
+            var order = _userContext.carts.Where(x => x.id_user == cart.id_user).FirstOrDefault();
+
+            if (order == null)
+            {
+                cart.CartProdactTrans = pro2;
+                cart.order = false;
+                _userContext.Add(cart);
+
+            }
+            else
+            {
+                cart.CartProdactTrans = pro2;
+                cart.order = false;
+
+                _userContext.Add(cart);
+
+
+            }
+           
+         
+            _userContext.SaveChanges();
+
+            ViewBag.id = HttpContext.Session.GetInt32("id");
+            ViewBag.usernae_secc = HttpContext.Session.GetString("usernae_secc");
+            _userContext.SaveChanges();
+
+            return RedirectToAction("cart", "User");
+
+        }
+
+        [HttpGet]
+        public IActionResult Buy(int c)
+        {
+            ViewBag.id = HttpContext.Session.GetInt32("id");
+            ViewBag.usernae_secc = HttpContext.Session.GetString("usernae_secc");
+            ViewBag.RoleId = HttpContext.Session.GetString("RoleId");
+            var itemcart = _userContext.carts.ToList();
+            var itemprodacts = _userContext.prodacts.ToList();
+            ViewBag.id = c;
+            var pro2 = _userContext.carts.Where(x => x.id_user == c && x.order == false).ToList();
+           
+            var modelitems = Tuple.Create<IEnumerable<task_two.Models.Cart>, IEnumerable<task_two.Models.Prodact>>(itemcart, itemprodacts );
+
+            return View(modelitems);
+        }
+        [HttpPost]
+        public IActionResult Buy(Bill bill, Prodact prodact , Cart cart)
+        {
+            ViewBag.id = HttpContext.Session.GetInt32("id");
+            ViewBag.usernae_secc = HttpContext.Session.GetString("usernae_secc");
+            ViewBag.RoleId = HttpContext.Session.GetString("RoleId");
+            var pro2 = _userContext.prodacts.Where(x => x.IdProdact == prodact.IdProdact).FirstOrDefault();
+            var UserData = HttpContext.Session.GetInt32("id");
+            bill.DateBill = DateTime.Now;
+            bill.Id_regester = UserData;
+            bill.activebill = false;
+            bill.IdProdactTrans = pro2;
+            _userContext.Add(bill);
+            _userContext.SaveChanges();
+            cart.order = true;
+            _userContext.Update(cart);
+            Transaction tran = new Transaction { idbill = bill.IdBill, NameBill = bill.NameBill, Price = bill.Price, IdUser = UserData, DateBill = DateTime.Now, activebill = bill.activebill };
+            _userContext.Add(tran);
+
+            ViewBag.id = HttpContext.Session.GetInt32("id");
+            ViewBag.usernae_secc = HttpContext.Session.GetString("usernae_secc");
+            _userContext.SaveChanges();
+
+            return RedirectToAction("test", "User");
+
+        }
     }
 }

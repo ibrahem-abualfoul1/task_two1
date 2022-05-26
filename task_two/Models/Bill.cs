@@ -12,20 +12,21 @@ namespace task_two.Models
 
         [Key]
         public int IdBill { get; set; }
-     
-        public double Price { get; set; }
-        public int PhoneNumber { get; set; }
         public string NameBill { get; set; }
+        public double Price { get; set; }
+        public int? Id_regester { get; set; }
+        public int PhoneNumber { get; set; }
+       
         public bool activebill { get; set; }
 
-        public int? Id_regester { get; set; }
+       
         public DateTime DateBill { get; set; }
 
 
-        public int Prodactid { get; set; }
-
-        [ForeignKey(nameof(Prodactid))]
-        public virtual Prodact Productes { get; set; }
+        
+        public virtual Prodact IdProdactTrans { get; set; }
+        
+      
 
     }
 }

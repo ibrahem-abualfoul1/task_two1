@@ -36,7 +36,8 @@ namespace task_two.Controllers
            
 
 
-            var itemtestmonil = _context.testimonials.ToList();
+            var itemtestmonil = _context.testimonials.ToList();   
+            
 
             var modelitems = Tuple.Create<IEnumerable<task_two.Models.Category>, IEnumerable<task_two.Models.Prodact> , IEnumerable<task_two.Models.Messege> , IEnumerable<task_two.Models.MangePage>, IEnumerable<task_two.Models.Testimonial>>(itemCategories, itemprodacts, itemmessege , itemMangePage,itemtestmonil);
             return View(modelitems);

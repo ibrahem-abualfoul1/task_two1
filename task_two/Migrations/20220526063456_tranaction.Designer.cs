@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using task_two.Data;
 
 namespace task_two.Migrations
 {
     [DbContext(typeof(UserContext))]
-    partial class UserContextModelSnapshot : ModelSnapshot
+    [Migration("20220526063456_tranaction")]
+    partial class tranaction
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -104,29 +106,6 @@ namespace task_two.Migrations
                     b.HasIndex("IdProdactTransIdProdact");
 
                     b.ToTable("bills");
-                });
-
-            modelBuilder.Entity("task_two.Models.Cart", b =>
-                {
-                    b.Property<int>("id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .UseIdentityColumn();
-
-                    b.Property<int?>("CartProdactTransIdProdact")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("id_user")
-                        .HasColumnType("int");
-
-                    b.Property<bool>("order")
-                        .HasColumnType("bit");
-
-                    b.HasKey("id");
-
-                    b.HasIndex("CartProdactTransIdProdact");
-
-                    b.ToTable("carts");
                 });
 
             modelBuilder.Entity("task_two.Models.Category", b =>
@@ -332,15 +311,6 @@ namespace task_two.Migrations
                         .HasForeignKey("IdProdactTransIdProdact");
 
                     b.Navigation("IdProdactTrans");
-                });
-
-            modelBuilder.Entity("task_two.Models.Cart", b =>
-                {
-                    b.HasOne("task_two.Models.Prodact", "CartProdactTrans")
-                        .WithMany()
-                        .HasForeignKey("CartProdactTransIdProdact");
-
-                    b.Navigation("CartProdactTrans");
                 });
 
             modelBuilder.Entity("task_two.Models.Prodact", b =>
