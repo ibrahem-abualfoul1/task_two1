@@ -28,8 +28,6 @@ namespace task_two.Controllers
         {
             ViewBag.id = HttpContext.Session.GetInt32("id");
             ViewBag.usernae_secc = HttpContext.Session.GetString("usernae_secc");
-            ViewBag.RoleId = HttpContext.Session.GetString("RoleId");
-
             return View(await _context.mangePages.ToListAsync());
         }
         // GET: MangePages/Details/5

@@ -14,13 +14,8 @@ namespace task_two.Models
        public int idbill { get; set; }
         public string NameBill { get; set; }
         public double Price { get; set; }
-        public int? IdUser { get; set; }
+        public int? IdUser { get; set; } 
 
-        public DateTime DateBill { get; set; }
-
-        public bool activebill { get; set; }
-
-        public virtual Account Accountid { get; set; }
 
     }
 }

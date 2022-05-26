@@ -14,10 +14,7 @@ namespace task_two.Models
         public string ContactText { get; set; }
 
        
-        public int Reviwe { get; set; } 
-        
-        public int? Id_regester { get; set; }
-        public bool active { get; set; }
+        public int Reviwe { get; set; }
 
 
     }

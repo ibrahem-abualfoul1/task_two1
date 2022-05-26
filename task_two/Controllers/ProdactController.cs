@@ -27,24 +27,19 @@ namespace task_two.Controllers
         {
             ViewBag.id = HttpContext.Session.GetInt32("id");
             ViewBag.usernae_secc = HttpContext.Session.GetString("usernae_secc");
-            ViewBag.RoleId = HttpContext.Session.GetString("RoleId");
-
-            var modelContext = _context.prodacts.Include(p => p.Category);
+            var modelContext = _context.prodacts.Include(p => p.Catigory);
             return View(await modelContext.ToListAsync());
         }
         // GET: Productes/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            ViewBag.id = HttpContext.Session.GetInt32("id");
-            ViewBag.usernae_secc = HttpContext.Session.GetString("usernae_secc");
-            ViewBag.RoleId = HttpContext.Session.GetString("RoleId");
             if (id == null)
             {
                 return NotFound();
             }
 
             var producte = await _context.prodacts
-                .Include(p => p.Category)
+                .Include(p => p.Catigory)
                 .FirstOrDefaultAsync(m => m.IdProdact== id);
             if (producte == null)
             {
@@ -56,10 +51,7 @@ namespace task_two.Controllers
         // GET: Productes/Create
         public IActionResult Create()
         {
-            ViewBag.id = HttpContext.Session.GetInt32("id");
-            ViewBag.usernae_secc = HttpContext.Session.GetString("usernae_secc");
-            ViewBag.RoleId = HttpContext.Session.GetString("RoleId");
-            ViewData["NameCategory"] = new SelectList(_context.categories, "NameCategory", "NameCategory");
+            ViewData["IdCategory"] = new SelectList(_context.categories, "IdCategory", "IdCategory");
             return View();
         }
 
@@ -70,9 +62,6 @@ namespace task_two.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(Prodact producte)
         {
-            ViewBag.id = HttpContext.Session.GetInt32("id");
-            ViewBag.usernae_secc = HttpContext.Session.GetString("usernae_secc");
-            ViewBag.RoleId = HttpContext.Session.GetString("RoleId");
             if (ModelState.IsValid)
             {
 
@@ -82,16 +71,13 @@ namespace task_two.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["NameCategory"] = new SelectList(_context.categories, "NameCategory", "NameCategory", producte.Category.NameCategory);
+            ViewData["IdCategory"] = new SelectList(_context.categories, "IdCategory", "IdCategory", producte.Catigory.IdCategory);
 
             return View(producte);
         }
         // GET: Productes/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            ViewBag.id = HttpContext.Session.GetInt32("id");
-            ViewBag.usernae_secc = HttpContext.Session.GetString("usernae_secc");
-            ViewBag.RoleId = HttpContext.Session.GetString("RoleId");
             if (id == null)
             {
                 return NotFound();
@@ -102,7 +88,7 @@ namespace task_two.Controllers
             {
                 return NotFound();
             }
-            ViewData["NameCategory"] = new SelectList(_context.categories, "NameCategory", "NameCategory", producte.Category);
+            ViewData["IdCategory"] = new SelectList(_context.categories, "IdCategory", "IdCategory", producte.Catigory);
             return View(producte);
         }
 
@@ -113,9 +99,6 @@ namespace task_two.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, Prodact producte)
         {
-            ViewBag.id = HttpContext.Session.GetInt32("id");
-            ViewBag.usernae_secc = HttpContext.Session.GetString("usernae_secc");
-            ViewBag.RoleId = HttpContext.Session.GetString("RoleId");
             if (id != producte.IdProdact)
             {
                 return NotFound();
@@ -143,7 +126,7 @@ namespace task_two.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["NameCategory"] = new SelectList(_context.categories, "NameCategory", "NameCategory", producte.Category);
+            ViewData["IdCategory"] = new SelectList(_context.categories, "IdCategory", "IdCategory", producte.Catigory);
 
             return View(producte);
         }
@@ -151,16 +134,13 @@ namespace task_two.Controllers
         // GET: Productes/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            ViewBag.id = HttpContext.Session.GetInt32("id");
-            ViewBag.usernae_secc = HttpContext.Session.GetString("usernae_secc");
-            ViewBag.RoleId = HttpContext.Session.GetString("RoleId");
             if (id == null)
             {
                 return NotFound();
             }
 
             var producte = await _context.prodacts
-                .Include(p => p.Category)
+                .Include(p => p.Catigory)
                 .FirstOrDefaultAsync(m => m.IdProdact == id);
             if (producte == null)
             {
@@ -175,9 +155,6 @@ namespace task_two.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            ViewBag.id = HttpContext.Session.GetInt32("id");
-            ViewBag.usernae_secc = HttpContext.Session.GetString("usernae_secc");
-            ViewBag.RoleId = HttpContext.Session.GetString("RoleId");
             var producte = await _context.prodacts.FindAsync(id);
             _context.prodacts.Remove(producte);
             await _context.SaveChangesAsync();

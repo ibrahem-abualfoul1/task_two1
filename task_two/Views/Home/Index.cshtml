@@ -1,11 +1,9 @@
 ﻿@model Tuple<IEnumerable<task_two.Models.Category>, IEnumerable<task_two.Models.Prodact>, IEnumerable<task_two.Models.Messege>
-                                    , IEnumerable<task_two.Models.MangePage>, IEnumerable<task_two.Models.Testimonial>>
+                            , IEnumerable<task_two.Models.MangePage>>
 @{ ViewData["Title"] = "Home Page"; }
-@{ var name = ViewBag.usernae_secc;
-    var roleid = ViewBag.RoleId;}
+@{ var name = ViewBag.usernae_secc; }
 
-@if (roleid == "\0\0\0\u0002" || roleid == null)
-{
+
 <div class="main-content">
 
 
@@ -41,12 +39,11 @@
 
 
     <partial name="_testimonial" />
-    <partial name="Creattest" />
-   
 
 
+    <partial name="_Blog" />
 
 
+    <partial name="_Clients" />
 
-
-</div>}
+</div>
