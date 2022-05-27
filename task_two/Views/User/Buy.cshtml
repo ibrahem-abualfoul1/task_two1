@@ -8,7 +8,8 @@
 
 @{ var name = ViewBag.usernae_secc;
     var roleid = ViewBag.RoleId;
-    var id = ViewBag.id;}
+    var id = ViewBag.id;
+    var price = 0;}
 <div class="contact-box-main">
     <div class="container">
 
@@ -27,35 +28,7 @@
                             {
                                 @if (item.id_user == id)
                                 {
-                                    @*<div class="row">
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <input type="text" class="form-control" id="IdProdact" name="IdProdact" placeholder="enter balanc" value="@id" required data-error="Please enter your name" readonly>
-                                                <div class="help-block with-errors"></div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <input type="text" class="form-control" id="IdProdact" name="IdProdact" placeholder="enter balanc" value="@id" required data-error="Please enter your name" readonly>
-                                                <div class="help-block with-errors"></div>
-                                            </div>
-                                        </div>
 
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <input type="text" class="form-control" id="Price" name="Price" value="@item.CartProdactTrans.Price" required data-error="Please enter your name">
-                                                <div class="help-block with-errors"></div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <input type="text" class="form-control" id="NameProdact" name="NameProdact" value="@item.CartProdactTrans.NameProdact" required data-error="Please enter your name" readonly>
-                                                <div class="help-block with-errors"></div>
-                                            </div>
-                                        </div>
-
-
-                                    </div>*@
 
                                     <tr>
                                         <td>@id</td>
@@ -63,12 +36,33 @@
                                         <td>@item.CartProdactTrans.NameProdact</td>
                                     </tr>
 
-
+                                    price += item.CartProdactTrans.Price;
                                 }
 
                             }
 
                         </table>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <input type="text" placeholder="NameBill" id="NameBill" class="form-control" name="NameBill" required data-error="Please enter your email">
+                                <div class="help-block with-errors"></div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <input type="text" placeholder="PhoneNumber" id="PhoneNumber" class="form-control" name="PhoneNumber" required data-error="Please enter your email">
+                                <div class="help-block with-errors"></div>
+                            </div>
+                        </div>   
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <input type="text" placeholder="Price" id="Price" class="form-control" value="@price" required data-error="Please enter your email" readonly>
+                                <div class="help-block with-errors"></div>
+                            </div>
+                        </div>
+
+
 
                         <div class="submit-button text-center">
                             <button class="btn hvr-hover" id="submit" type="submit">buy</button>

@@ -227,7 +227,8 @@ namespace task_two.Controllers
             cart.id_user = UserData;
             var count = _userContext.carts.Where(x => x.id_user == cart.id_user);
             var itemprodacts = _userContext.prodacts.ToList();
-            var itemcart = _userContext.carts.ToList();
+            var itemcart = _userContext.carts.ToList();    
+           
             var modelitems = Tuple.Create<IEnumerable<task_two.Models.Prodact>,IEnumerable<task_two.Models.Cart>>(itemprodacts,itemcart);
 
             return View(modelitems);
