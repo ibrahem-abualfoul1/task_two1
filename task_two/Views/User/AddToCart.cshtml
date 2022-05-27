@@ -18,9 +18,9 @@
                                                             <div class="contact-form-right">
 
                                                                 <form asp-controller="User" asp-action="addtocart" method="post">
-                                                                    @foreach (var item in Model.Item2)
+                                                                    @foreach (var item in Model.Item1)
                                                                     {
-                                                                        @if (item.CartProdactTrans.IdProdact == id)
+                                                                        @if (item.IdProdact == id)
                                                                         {
                                                                             <div class="row">
                                                                                 <div class="col-md-12">
@@ -37,13 +37,13 @@
 
                                                                                 <div class="col-md-12">
                                                                                     <div class="form-group">
-                                                                                        <input type="text" class="form-control" id="Price" name="Price" value="@item.CartProdactTrans.Price" required data-error="Please enter your name" readonly>
+                                                                                        <input type="text" class="form-control" id="Price" name="Price" value="@item.Price" required data-error="Please enter your name" readonly>
                                                                                         <div class="help-block with-errors"></div>
                                                                                     </div>
                                                                                 </div>
                                                                                 <div class="col-md-12">
                                                                                     <div class="form-group">
-                                                                                        <input type="text" class="form-control" id="NameProdact" name="NameProdact" value="@item.CartProdactTrans.NameProdact" required data-error="Please enter your name" readonly>
+                                                                                        <input type="text" class="form-control" id="NameProdact" name="NameProdact" value="@item.NameProdact" required data-error="Please enter your name" readonly>
                                                                                         <div class="help-block with-errors"></div>
                                                                                     </div>
                                                                                 </div>

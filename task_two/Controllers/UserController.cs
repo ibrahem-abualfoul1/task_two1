@@ -295,10 +295,11 @@ namespace task_two.Controllers
             ViewBag.RoleId = HttpContext.Session.GetString("RoleId");
             var itemcart = _userContext.carts.ToList();
             var itemprodacts = _userContext.prodacts.ToList();
+            var itembill = _userContext.bills.ToList();
             ViewBag.id = c;
             var pro2 = _userContext.carts.Where(x => x.id_user == c && x.order == false).ToList();
            
-            var modelitems = Tuple.Create<IEnumerable<task_two.Models.Cart>, IEnumerable<task_two.Models.Prodact>>(itemcart, itemprodacts );
+            var modelitems = Tuple.Create<IEnumerable<task_two.Models.Cart>, IEnumerable<task_two.Models.Prodact>, IEnumerable<task_two.Models.Bill>>(itemcart, itemprodacts , itembill );
 
             return View(modelitems);
         }

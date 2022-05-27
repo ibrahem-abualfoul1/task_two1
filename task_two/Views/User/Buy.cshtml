@@ -1,4 +1,4 @@
-﻿@model Tuple<IEnumerable<task_two.Models.Cart>, IEnumerable<task_two.Models.Prodact>>
+﻿@model Tuple<IEnumerable<task_two.Models.Cart>, IEnumerable<task_two.Models.Prodact>, IEnumerable<task_two.Models.Bill>>
 @{
     ViewData["Title"] = "Buy";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -9,54 +9,76 @@
 @{ var name = ViewBag.usernae_secc;
     var roleid = ViewBag.RoleId;
     var id = ViewBag.id;}
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                id
-            </th>
-            <th>
-                NameProdact
-            </th>
-            <th>
-                Units
-            </th>
-            <th>
-                Price
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model.Item1)
-        {
-            @if (item.id_user == id)
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.id)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.CartProdactTrans.NameProdact)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.CartProdactTrans.Units)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.CartProdactTrans.Price)
-                    </td>
+<div class="contact-box-main">
+    <div class="container">
 
-                </tr>
-            }
-            else
-            {
+        <div class="row">
+            <div class="col-lg-8 col-sm-12">
+                <div class="contact-form-right">
 
-            <td>
-                <h1>null</h1>
-            </td>
-        }}
-        <td>
-            <a class="btn btn-flat btn-theme-colored mt-15 text-theme-color-2" asp-action="buy" asp-route-c="@id">Read More</a>
-        </td>
-        </tbody>
-    </table>
+                    <form asp-controller="User" asp-action="buy" method="post">
+                        <table style="width:100%">
+                            <tr>
+                                <th>IdProdact</th>
+                                <th>Price</th>
+                                <th>NameProdact</th>
+                            </tr>
+                            @foreach (var item in Model.Item1)
+                            {
+                                @if (item.id_user == id)
+                                {
+                                    @*<div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" id="IdProdact" name="IdProdact" placeholder="enter balanc" value="@id" required data-error="Please enter your name" readonly>
+                                                <div class="help-block with-errors"></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" id="IdProdact" name="IdProdact" placeholder="enter balanc" value="@id" required data-error="Please enter your name" readonly>
+                                                <div class="help-block with-errors"></div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" id="Price" name="Price" value="@item.CartProdactTrans.Price" required data-error="Please enter your name">
+                                                <div class="help-block with-errors"></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" id="NameProdact" name="NameProdact" value="@item.CartProdactTrans.NameProdact" required data-error="Please enter your name" readonly>
+                                                <div class="help-block with-errors"></div>
+                                            </div>
+                                        </div>
+
+
+                                    </div>*@
+
+                                    <tr>
+                                        <td>@id</td>
+                                        <td>@item.CartProdactTrans.Price</td>
+                                        <td>@item.CartProdactTrans.NameProdact</td>
+                                    </tr>
+
+
+                                }
+
+                            }
+
+                        </table>
+
+                        <div class="submit-button text-center">
+                            <button class="btn hvr-hover" id="submit" type="submit">buy</button>
+
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
