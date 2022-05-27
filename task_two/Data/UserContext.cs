@@ -16,13 +16,15 @@ namespace task_two.Data
 
         }
         public DbSet<Account> User { get; set; }
-        public DbSet<Bill> bills { get; set; }
+     
         public DbSet<Category> categories { get; set; }
         public DbSet<MangePage> mangePages { get; set; }
         public DbSet<Messege> messeges { get; set; }
         public DbSet<Prodact> prodacts { get; set; }
+        public DbSet<Bill> bills { get; set; }
         public DbSet<Role> roles { get; set; }
         public DbSet<Testimonial> testimonials { get; set; }
+        public DbSet<Cart> carts { get; set; }
         public DbSet<Transaction> transactions { get; set; }
     }
 }

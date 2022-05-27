@@ -27,13 +27,19 @@ namespace task_two.Controllers
         {
             ViewBag.id = HttpContext.Session.GetInt32("id");
             ViewBag.usernae_secc = HttpContext.Session.GetString("usernae_secc");
+            ViewBag.RoleId = HttpContext.Session.GetString("RoleId");
 
             var itemCategories = _context.categories.ToList();
             var itemMangePage = _context.mangePages.ToList();
             var itemprodacts = _context.prodacts.ToList();
-            var itemmessege = _context.messeges.ToList();
+            var itemmessege = _context.messeges.ToList(); 
+           
 
-            var modelitems = Tuple.Create<IEnumerable<task_two.Models.Category>, IEnumerable<task_two.Models.Prodact> , IEnumerable<task_two.Models.Messege> , IEnumerable<task_two.Models.MangePage>>(itemCategories, itemprodacts, itemmessege , itemMangePage);
+
+            var itemtestmonil = _context.testimonials.ToList();   
+            
+
+            var modelitems = Tuple.Create<IEnumerable<task_two.Models.Category>, IEnumerable<task_two.Models.Prodact> , IEnumerable<task_two.Models.Messege> , IEnumerable<task_two.Models.MangePage>, IEnumerable<task_two.Models.Testimonial>>(itemCategories, itemprodacts, itemmessege , itemMangePage,itemtestmonil);
             return View(modelitems);
         }
       
@@ -41,12 +47,14 @@ namespace task_two.Controllers
         {
             ViewBag.id = HttpContext.Session.GetInt32("id");
             ViewBag.usernae_secc = HttpContext.Session.GetString("usernae_secc");
+            ViewBag.RoleId = HttpContext.Session.GetString("RoleId");
             return View();
         }
         public IActionResult admin()
         {
             ViewBag.id = HttpContext.Session.GetInt32("id");
             ViewBag.usernae_secc = HttpContext.Session.GetString("usernae_secc");
+            ViewBag.RoleId = HttpContext.Session.GetString("RoleId");
             return View();
         }
         public IActionResult Logout()
@@ -78,20 +86,22 @@ namespace task_two.Controllers
             return View(modelitems);
             
         }
-        public IActionResult _testimonial()
+   
+        public IActionResult Contact_Us()
         {
             ViewBag.id = HttpContext.Session.GetInt32("id");
             ViewBag.usernae_secc = HttpContext.Session.GetString("usernae_secc");
-            return View(_context.testimonials.ToList());
-        }
-        public IActionResult _Clients()
-        {
+            ViewBag.RoleId = HttpContext.Session.GetString("RoleId");
             return View();
         }
 
         [HttpPost]
-        public IActionResult _Clients(Messege messege)
+        public IActionResult Contact_Us(Messege messege)
         {
+
+            ViewBag.id = HttpContext.Session.GetInt32("id");
+            ViewBag.usernae_secc = HttpContext.Session.GetString("usernae_secc");
+            ViewBag.RoleId = HttpContext.Session.GetString("RoleId");
             messege.ResivedEmail = "abualoul@gmail.com";
           
 
@@ -99,6 +109,26 @@ namespace task_two.Controllers
             _context.SaveChanges();
             return View();
         }
+        [HttpPost]
+        public IActionResult Creattest(Testimonial test)
+        {
+
+            ViewBag.id = HttpContext.Session.GetInt32("id");
+            ViewBag.usernae_secc = HttpContext.Session.GetString("usernae_secc");
+            ViewBag.RoleId = HttpContext.Session.GetString("RoleId");
+            if (ModelState.IsValid)
+            {
+                var UserData = HttpContext.Session.GetInt32("id");
+                test.Id_regester = UserData;
+                test.active = false;
+                _context.testimonials.Add(test);
+                _context.SaveChanges();
+                  return RedirectToAction("test", "User");
+            }
+           
+            return View();
+        }
+
 
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

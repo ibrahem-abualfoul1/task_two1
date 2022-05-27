@@ -28,11 +28,16 @@ namespace task_two.Controllers
         {
             ViewBag.id = HttpContext.Session.GetInt32("id");
             ViewBag.usernae_secc = HttpContext.Session.GetString("usernae_secc");
+            ViewBag.RoleId = HttpContext.Session.GetString("RoleId");
+
             return View(await _context.testimonials.ToListAsync());
         }
         // GET: MangePages/Details/5
         public async Task<IActionResult> Details(int? id)
         {
+            ViewBag.id = HttpContext.Session.GetInt32("id");
+            ViewBag.usernae_secc = HttpContext.Session.GetString("usernae_secc");
+            ViewBag.RoleId = HttpContext.Session.GetString("RoleId");
             if (id == null)
             {
                 return NotFound();
@@ -51,6 +56,9 @@ namespace task_two.Controllers
         // GET: MangePages/Create
         public IActionResult Create()
         {
+            ViewBag.id = HttpContext.Session.GetInt32("id");
+            ViewBag.usernae_secc = HttpContext.Session.GetString("usernae_secc");
+            ViewBag.RoleId = HttpContext.Session.GetString("RoleId");
             return View();
         }
 
@@ -61,8 +69,14 @@ namespace task_two.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(Testimonial categorie)
         {
+            ViewBag.id = HttpContext.Session.GetInt32("id");
+            ViewBag.usernae_secc = HttpContext.Session.GetString("usernae_secc");
+            ViewBag.RoleId = HttpContext.Session.GetString("RoleId");
             if (ModelState.IsValid)
             {
+                var UserData = HttpContext.Session.GetInt32("id");
+
+                categorie.Id_regester = UserData;
                 _context.Add(categorie);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -73,6 +87,9 @@ namespace task_two.Controllers
         // GET: Testimonial/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
+            ViewBag.id = HttpContext.Session.GetInt32("id");
+            ViewBag.usernae_secc = HttpContext.Session.GetString("usernae_secc");
+            ViewBag.RoleId = HttpContext.Session.GetString("RoleId");
             if (id == null)
             {
                 return NotFound();
@@ -93,6 +110,9 @@ namespace task_two.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, Testimonial categorie)
         {
+            ViewBag.id = HttpContext.Session.GetInt32("id");
+            ViewBag.usernae_secc = HttpContext.Session.GetString("usernae_secc");
+            ViewBag.RoleId = HttpContext.Session.GetString("RoleId");
             if (id != categorie.Id)
             {
                 return NotFound();
@@ -126,6 +146,9 @@ namespace task_two.Controllers
         // GET: Testimonial/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
+            ViewBag.id = HttpContext.Session.GetInt32("id");
+            ViewBag.usernae_secc = HttpContext.Session.GetString("usernae_secc");
+            ViewBag.RoleId = HttpContext.Session.GetString("RoleId");
             if (id == null)
             {
                 return NotFound();
@@ -146,6 +169,9 @@ namespace task_two.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
+            ViewBag.id = HttpContext.Session.GetInt32("id");
+            ViewBag.usernae_secc = HttpContext.Session.GetString("usernae_secc");
+            ViewBag.RoleId = HttpContext.Session.GetString("RoleId");
             var categorie = await _context.testimonials.FindAsync(id);
             _context.testimonials.Remove(categorie);
             await _context.SaveChangesAsync();

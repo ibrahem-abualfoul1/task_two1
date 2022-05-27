@@ -21,29 +21,34 @@ namespace task_two.Models
         [Required(ErrorMessage = "Please enter email address")]
         public string Email { get; set; }
 
-        [RegularExpression(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,32}$", ErrorMessage = "Password must meet requirements")]
+        [RegularExpression(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,32}$", ErrorMessage = "Password more 8 , less 32 , need small letter , Captel letter , and الرمز ")]
         public string Password { get; set; }
 
 
         [Required(ErrorMessage = "Please enter phone")]
         [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$", ErrorMessage = "Not a valid phone number")]
         public string Phone_number { get; set; }
-        [Required(ErrorMessage = "Please enter full Name")]
+        [Required(ErrorMessage = "Please enter UerName")]
         public string UerName { get; set; }
         public DateTime DateRegister { get; set; }
 
         [Required(ErrorMessage = "Please enter City")]
         public string City { get; set; }
         public string Background { get; set; }
+        [Required(ErrorMessage = "Please enter Photo")]
         [NotMapped]
         public virtual IFormFile ImageFile_back { get; set; }
 
-        [Column("IdRole")]
-        public int IdRole { get; set; }
+        public int RoleId { get; set; }
 
+        [ForeignKey(nameof(RoleId))]
+        public virtual Role RoleTrans { get; set; }
+        [Required(ErrorMessage = "Please enter Gender")]
         public Gender genderenum { get; set; }
+        [Required(ErrorMessage = "Please enter Countries")]
+
         public Countries countriesenum { get; set; }
-     
+       
 
     }
     public enum Gender

@@ -10,8 +10,8 @@ using task_two.Data;
 namespace task_two.Migrations
 {
     [DbContext(typeof(UserContext))]
-    [Migration("20220526113700_qais")]
-    partial class qais
+    [Migration("20220526115731_v2")]
+    partial class v2
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

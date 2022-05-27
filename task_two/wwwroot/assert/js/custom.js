@@ -303,7 +303,7 @@ var THEMEMASCOT = {};
             var ajaxLoadContent = true;
             if( ajaxLoadContent ) {
                 $.ajax({
-                    url: "ajax-load/bootstrap-parent-modal.html",
+                    url: "/assert/ajax-load/bootstrap-parent-modal.html",
                     success: function (data) { $body.append(data); },
                     dataType: 'html'
                 });
@@ -943,7 +943,7 @@ var THEMEMASCOT = {};
         TM_sidePushPanelContent: function() {
             if( $body.hasClass('has-side-panel') ) {
                 $.ajax({
-                    url: "ajax-load/side-push-panel-content.html",
+                    url: "assert/ajax-load/side-push-panel-content.html",
                     success: function (data) { $body.append(data); },
                     dataType: 'html'
                 });

@@ -1,12 +1,10 @@
-﻿
-@{
-    ViewData["Title"] = "Test";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
+﻿@model Tuple<IEnumerable<task_two.Models.Category>, IEnumerable<task_two.Models.Prodact>, IEnumerable<task_two.Models.Messege>
+                                        , IEnumerable<task_two.Models.MangePage>, IEnumerable<task_two.Models.Testimonial>>
+@{ ViewData["Title"] = "Test";
+                Layout = "~/Views/Shared/_Layout.cshtml"; }
 
 
-@{ var name = ViewBag.usernae_secc;
-    }
+@{ var name = ViewBag.usernae_secc; }
 
 <div class="main-content">
 
@@ -18,24 +16,23 @@
     <partial name="~/Views/Home/_about.cshtml" />
 
     <partial name="~/Views/Home/_Certificates.cshtml" />
-    
+
     <partial name="~/Views/Home/_Services.cshtml" />
 
     <partial name="~/Views/Home/_Funfact.cshtml" />
-   
+
     <partial name="~/Views/Home/_Depertment.cshtml" />
 
     <partial name="~/Views/Home/_Doctors.cshtml" />
-    
-    <partial name="~/Views/Home/_Pricing.cshtml" />
-    
+
+
     <partial name="~/Views/Home/_Action.cshtml" />
-   
-    <partial name="~/Views/Home/_gallary.cshtml" />
-   
+
+    <partial name="~/Views/Home/_Map.cshtml" />
+
     <partial name="~/Views/Home/_testimonial.cshtml" />
- 
-    <partial name="~/Views/Home/_Blog.cshtml" />
-  
-    <partial name="~/Views/Home/_Clients.cshtml" />
+    <partial name="~/Views/Home/Creattest.cshtml" />
+   
+
+
 </div>

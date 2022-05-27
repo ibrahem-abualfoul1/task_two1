@@ -1,11 +1,8 @@
-﻿@model Tuple<IEnumerable<task_two.Models.Cart>, IEnumerable<task_two.Models.Prodact>>
+﻿ @model Tuple<IEnumerable<task_two.Models.Prodact>, IEnumerable<task_two.Models.Cart>>
 @{
-    ViewData["Title"] = "Buy";
+
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<h2>Buy</h2>
-
 @{ var id = ViewBag.id; }
 <table class="table">
     <thead>
@@ -26,7 +23,7 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model.Item1)
+        @foreach (var item in Model.Item2)
         {
             @if (item.id_user == id)
             {
@@ -45,14 +42,14 @@
                     </td>
 
                 </tr>
-            }
+ }
             else
             {
 
             <td>
                 <h1>null</h1>
             </td>
-        }}
+}}
         <td>
             <a class="btn btn-flat btn-theme-colored mt-15 text-theme-color-2" asp-action="buy" asp-route-c="@id">Read More</a>
         </td>

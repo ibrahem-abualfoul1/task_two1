@@ -1,5 +1,24 @@
-﻿@model Tuple<IEnumerable<task_two.Models.Category>, IEnumerable<task_two.Models.Prodact>, IEnumerable<task_two.Models.Messege>
-                                    , IEnumerable<task_two.Models.MangePage>, IEnumerable<task_two.Models.Testimonial>>
+﻿
+@{
+    ViewData["Title"] = "Contact_Us";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@{ var name = ViewBag.usernae_secc; }
+
+
+<style>
+    .contact-form {
+        width: 100%;
+        margin: 53px auto;
+        max-width: 83%;
+        box-shadow: 7px 8px 14px 3px rgb(0 0 0 / 30%);
+        border-radius: 60px;
+        padding: 20px 69px;
+    }
+    .form-control {
+        border-radius: 23px !important;
+    }
+</style>
 <section class="clients bg-theme-colored">
 
 
@@ -9,13 +28,13 @@
     <div class="contact-box-main">
         <div class="container">
             <div class="row">
-                <div class="col-lg-8 col-sm-12">
+                <div class="contact-form">
                     <div class="contact-form-right">
-                        <form asp-controller="Home" asp-action="_Clients">
+                        <form asp-controller="Home" asp-action="Contact_Us">
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label style="text-align: center !important; font-weight: bold;">Name</label>
+                                        <label style="text-align: center !important; font-weight: bold; color: #fff; font-size: 20px;">Name</label>
                                         <input type="text" class="form-control" id="NameMessege" name="NameMessege" placeholder="Your Name" required data-error="Please enter your name">
                                         <div class="help-block with-errors"></div>
                                     </div>
@@ -23,7 +42,7 @@
 
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label style="text-align: center !important; font-weight: bold;">Email</label>
+                                        <label style="text-align: center !important; font-weight: bold; color: #fff; font-size: 20px; ">Email</label>
                                         <input type="email" placeholder="Your Email" id="SenderEmail" class="form-control" name="SenderEmail" required data-error="Please enter your email">
                                         <div class="help-block with-errors"></div>
                                     </div>
@@ -31,7 +50,7 @@
 
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label style="text-align: center !important; font-weight: bold;">Subject</label>
+                                        <label style="text-align: center !important; font-weight: bold; color: #fff; font-size: 20px; ">Subject</label>
                                         <input type="text" class="form-control" id="Subject" name="Subject" placeholder="Subject" required data-error="Please enter your Subject">
 
                                         <div class="help-block with-errors"></div>
@@ -40,7 +59,7 @@
 
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label style="text-align: center !important; font-weight: bold;">Your Message</label>
+                                        <label style="text-align: center !important; font-weight: bold; color: #fff; font-size: 20px; ">Your Message</label>
 
                                         <textarea class="form-control" id="ContactMessege" name="ContactMessege" placeholder="Your Message" rows="4" data-error="Write your message" required></textarea>
                                         <div class="help-block with-errors"></div>
@@ -62,3 +81,4 @@
     </div>                    <!-- End Cart -->
 
 </section>
+

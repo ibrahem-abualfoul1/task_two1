@@ -8,9 +8,31 @@
     var ProfilePic = ViewBag.ProPic;
     ProfilePic = "~/Image/" + ProfilePic;
 }
+<style>
+    .edit-form-content {
+        margin: 20px auto;
+        width: 100%;
+        max-width: 61%;
+        padding: 59px 71px;
+        height: 50%;
+        background-color: transparent;
+        box-shadow: 7px 8px 14px 3px rgb(0 0 0 / 30%);
+        border-radius: 60px;
+    }
 
+    .form-control {
+        box-shadow: none;
+        height: 45px;
+        border: 3px solid #1196CC;
+        border-radius: 20px;
+    }
+    .btn-color:hover {
+        background-color: #1196CC !important;
+        color: #fff !important;
+    }
+</style>
 <div class="container">
-    <div class="col-md-4">
+    <div class="edit-form-content">
         <form asp-controller="User" asp-action="Profiel" enctype="multipart/form-data">
 
             <!-- Form -->
@@ -38,7 +60,7 @@
             <div class="submit-button text-center">
 
                 <div class="submit-button text-center">
-                    <input type="submit" name="signup" id="signup" class="btn hvr-hover" value="Profiel" />
+                    <input type="submit" name="signup" id="signup" class="btn hvr-hover btn-color" value="Profile" />
                 </div>
 
 

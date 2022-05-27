@@ -7,22 +7,29 @@
 
 <style>
     .signin-content {
-        margin-left: auto;
-        margin-right: auto;
-        padding-top: 88px;
+        margin: 20px auto;
+        width: 100%;
+        max-width: 62%;
+        padding: 24px 55px;
+        height: 75%;
+        background-color: transparent;
+        box-shadow: 7px 8px 14px 3px rgb(0 0 0 / 30%);
+        border-radius: 60px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
     }
 
     .grid-container {
         display: grid;
-        grid-template-columns: auto auto auto;
-        background-color: white;
+        grid-template-columns: 35% auto;
     }
 
     .grid-item {
         background-color: rgba(255, 255, 255, 0.8);
-        font-size: 12px;
-        text-align: center;
-        padding: 53px;
+        display: flex;
+        align-items: center;
+        margin-bottom: 24%;
     }
 
     .a1 {
@@ -53,7 +60,7 @@
     <div class="signin-content">
         <div class="grid-container">
             <div class="grid-item">
-                <img src="~/login_reg/images/signup-image.jpg" />
+                <img src="~/assert/images/main-logo.png"  />
             </div>
             <div class="grig-item">
                 <div class="signin-form">
@@ -106,6 +113,7 @@
                         <div class="form-group">
                             <label asp-for="ImageFile_back" class="control-label"></label>
                             <input asp-for="ImageFile_back" accept="image/*" required />
+
                             <span asp-validation-for="ImageFile_back" class="text-danger"></span>
                         </div>
 
