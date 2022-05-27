@@ -78,7 +78,7 @@ namespace task_two.Controllers
             ViewBag.id = HttpContext.Session.GetInt32("id");
             ViewBag.usernae_secc = HttpContext.Session.GetString("usernae_secc");
             ViewBag.RoleId = HttpContext.Session.GetString("RoleId");
-            ViewBag.id = c;
+            ViewBag.idprodact = c;
             var pro2 = _context.prodacts.Where(x => x.IdCategory == c).ToList();
             return View(pro2);
         }

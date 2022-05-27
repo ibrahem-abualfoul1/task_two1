@@ -3,6 +3,18 @@
 @{ var name = ViewBag.usernae_secc;
     var roleid = ViewBag.RoleId;
     var id = ViewBag.id;}
+<style>
+    .signin-content {
+        margin: 20px auto;
+        width: 100%;
+        max-width: 40%;
+        padding: 24px 80px;
+        height: 100%;
+        background-color: transparent;
+        box-shadow: 7px 8px 14px 3px rgb(0 0 0 / 30%);
+        border-radius: 60px;
+    }
+</style>
 @if (id == null)
 {
     <section class="clients bg-theme-colored" hidden>
@@ -31,7 +43,7 @@
                                         </select>
                                     </div>
 
-                                    <div class="col-md-12">
+                                    <div class="signin-content">
                                         <div class="form-group">
                                             <label style="text-align: center !important; font-weight: bold;">ContactText</label>
 
