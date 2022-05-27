@@ -284,7 +284,7 @@ namespace task_two.Controllers
             ViewBag.usernae_secc = HttpContext.Session.GetString("usernae_secc");
             _userContext.SaveChanges();
 
-            return RedirectToAction("cart", "User");
+            return RedirectToAction("test", "User");
 
         }
 
@@ -318,8 +318,7 @@ namespace task_two.Controllers
             bill.IdProdactTrans = pro2;
             _userContext.Add(bill);
             _userContext.SaveChanges();
-            var cartremov = _userContext.carts.Single(x => x.id_user == UserData);
-            _userContext.carts.Remove(cartremov);
+
             Transaction tran = new Transaction { idbill = bill.IdBill, NameBill = bill.NameBill, Price = bill.Price, IdUser = UserData, DateBill = DateTime.Now, activebill = bill.activebill };
             _userContext.Add(tran);
 

@@ -28,15 +28,26 @@
                             {
                                 @if (item.id_user == id)
                                 {
+                                    @if (item.order == false)
+                                    {
 
+                                        <tr>
+                                            <td>@id</td>
+                                            <td>@item.CartProdactTrans.Price</td>
+                                            <td>@item.CartProdactTrans.NameProdact</td>
+                                        </tr>
 
-                                    <tr>
+                                        price += item.CartProdactTrans.Price;
+                                    }
+                                }
+                                else
+                                {
+
+                                    <tr hidden>
                                         <td>@id</td>
                                         <td>@item.CartProdactTrans.Price</td>
                                         <td>@item.CartProdactTrans.NameProdact</td>
                                     </tr>
-
-                                    price += item.CartProdactTrans.Price;
                                 }
 
                             }
