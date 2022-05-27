@@ -329,5 +329,38 @@ namespace task_two.Controllers
             return RedirectToAction("test", "User");
 
         }
+
+
+        public async Task<IActionResult> Delete(int? idcart)
+        {
+            ViewBag.id = HttpContext.Session.GetInt32("id");
+            ViewBag.usernae_secc = HttpContext.Session.GetString("usernae_secc");
+            ViewBag.RoleId = HttpContext.Session.GetString("RoleId");
+           
+
+            var producte = await _userContext.carts.FindAsync(idcart);
+           
+
+            return View(producte);
+        }
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirmed(int id)
+        {
+            ViewBag.id = HttpContext.Session.GetInt32("id");
+            ViewBag.usernae_secc = HttpContext.Session.GetString("usernae_secc");
+            ViewBag.RoleId = HttpContext.Session.GetString("RoleId");
+
+            
+            ViewBag.cart = id;
+
+            var producte = await _userContext.carts.FindAsync(id);
+            _userContext.carts.Remove(producte);
+            await _userContext.SaveChangesAsync();
+            return RedirectToAction(nameof(Cart));
+        }
+
+
     }
+
 }

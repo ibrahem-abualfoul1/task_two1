@@ -5,6 +5,7 @@
 }
 @{ var name = ViewBag.usernae_secc;
     var roleid = ViewBag.RoleId;
+    var idcart = ViewBag.cart;
     var id = ViewBag.id;}
 
 <table class="table">
@@ -32,28 +33,33 @@
             {
                 @if (item.order == false)
                 {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.id)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.CartProdactTrans.NameProdact)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.CartProdactTrans.Units)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.CartProdactTrans.Price)
-                        </td>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CartProdactTrans.NameProdact)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CartProdactTrans.Units)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CartProdactTrans.Price)
+            </td>
 
-                    </tr>
+        <td>
+            <a class="btn btn-flat btn-theme-colored mt-15 text-theme-color-2" asp-action="Delete" asp-route-idcart="@item.id">Delete</a>
+
+        </td>
+
+        </tr>
                 }
 
             }
-
+          
         }
 
-    <td>
+<td>
         <a class="btn btn-flat btn-theme-colored mt-15 text-theme-color-2" asp-action="buy" asp-route-c="@id">Read More</a>
     </td>
     </tbody>

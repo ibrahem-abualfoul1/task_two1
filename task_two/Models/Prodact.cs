@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -18,6 +19,11 @@ namespace task_two.Models
 
         public int Price { get; set; }
         public int Units { get; set; }
+
+        public string UrlProdact { get; set; }
+
+        [NotMapped]
+        public virtual IFormFile ImageFile_Prodact { get; set; }
 
         public int IdCategory { get; set; }
 
