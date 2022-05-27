@@ -5,41 +5,45 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+@{ var name = ViewBag.usernae_secc;
+    var roleid = ViewBag.RoleId;
+    var id = ViewBag.id;}
 <section id="depertment" class="bg-silver-light">
     <div class="container">
-      
+
         <div class="section-content">
             <div class="row">
 
                 @foreach (var item in Model)
                 {
-                    
-                        <div class="col-xs-12 col-sm-6 col-md-4 mb-30">
-                            <div class="p-20 bg-white">
-                                <img src="~/assets/img/city-profile.jpg" asp-append-version="true">
-                                <h3 class="">
-                                    <a href="#">
-                                        @item.NameProdact
-                                    </a>
-                                </h3>
-                                <p class="">
-                                    @item.Describtion
-                                </p>
-                                <p>
 
-                                    @item.IdCategory
-                                </p>
+                    <div class="col-xs-12 col-sm-6 col-md-4 mb-30">
+                        <div class="p-20 bg-white">
+                            <img src="~/assets/img/city-profile.jpg" asp-append-version="true">
+                            <h3 class="">
+                                <a href="#">
+                                    @item.NameProdact
+                                </a>
+                            </h3>
+                            <p class="">
+                                @item.Describtion
+                            </p>
+                            <p>
 
-                               
-                                <a class="btn btn-flat btn-theme-colored mt-15 text-theme-color-2" asp-action="Addtocart" asp-route-c="@item.IdProdact">Read More</a>
-                            </div>
-                        </div>}
-               
+                                @item.IdCategory
+                            </p>
 
 
-                
-            
+                            <a class="btn btn-flat btn-theme-colored mt-15 text-theme-color-2" asp-action="Addtocart" asp-route-c="@item.IdProdact">Read More</a>
+                        </div>
+                    </div>}
+
+
+
+
+
             </div>
-        </div> </div>
+        </div>
+    </div>
 </section>
 

@@ -1,5 +1,8 @@
 ﻿
-@{ var id = ViewBag.id; }
+
+@{ var name = ViewBag.usernae_secc;
+    var roleid = ViewBag.RoleId;
+    var id = ViewBag.id;}
 @if (id == null)
 {
     <section class="clients bg-theme-colored" hidden>
@@ -57,7 +60,7 @@ else
 {
 
 
-    <section class="clients bg-theme-colored" >
+    <section class="clients bg-theme-colored">
 
 
 

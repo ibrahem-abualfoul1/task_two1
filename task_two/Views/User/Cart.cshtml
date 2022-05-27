@@ -1,9 +1,11 @@
-﻿ @model Tuple<IEnumerable<task_two.Models.Prodact>, IEnumerable<task_two.Models.Cart>>
+﻿@model Tuple<IEnumerable<task_two.Models.Prodact>, IEnumerable<task_two.Models.Cart>>
 @{
 
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-@{ var id = ViewBag.id; }
+@{ var name = ViewBag.usernae_secc;
+    var roleid = ViewBag.RoleId;
+    var id = ViewBag.id;}
 <table class="table">
     <thead>
         <tr>
@@ -42,14 +44,14 @@
                     </td>
 
                 </tr>
- }
+            }
             else
             {
 
             <td>
                 <h1>null</h1>
             </td>
-}}
+        }}
         <td>
             <a class="btn btn-flat btn-theme-colored mt-15 text-theme-color-2" asp-action="buy" asp-route-c="@id">Read More</a>
         </td>

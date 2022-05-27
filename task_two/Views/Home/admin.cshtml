@@ -1,7 +1,10 @@
 ﻿@{
     ViewData["Title"] = "admin";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml"; }
-@{ var name = ViewBag.usernae_secc; }
+
+@{ var name = ViewBag.usernae_secc;
+    var roleid = ViewBag.RoleId;
+    var id = ViewBag.id;}
 <div>
 
     hello @name

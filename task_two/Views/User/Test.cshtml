@@ -1,10 +1,12 @@
 ﻿@model Tuple<IEnumerable<task_two.Models.Category>, IEnumerable<task_two.Models.Prodact>, IEnumerable<task_two.Models.Messege>
-                                        , IEnumerable<task_two.Models.MangePage>, IEnumerable<task_two.Models.Testimonial>>
+                                            , IEnumerable<task_two.Models.MangePage>, IEnumerable<task_two.Models.Testimonial>>
 @{ ViewData["Title"] = "Test";
-                Layout = "~/Views/Shared/_Layout.cshtml"; }
+    Layout = "~/Views/Shared/_Layout.cshtml"; }
 
 
-@{ var name = ViewBag.usernae_secc; }
+@{ var name = ViewBag.usernae_secc;
+    var roleid = ViewBag.RoleId;
+    var id = ViewBag.id;}
 
 <div class="main-content">
 
@@ -32,7 +34,7 @@
 
     <partial name="~/Views/Home/_testimonial.cshtml" />
     <partial name="~/Views/Home/Creattest.cshtml" />
-   
+
 
 
 </div>

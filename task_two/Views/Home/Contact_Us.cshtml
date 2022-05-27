@@ -3,8 +3,10 @@
     ViewData["Title"] = "Contact_Us";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-@{ var name = ViewBag.usernae_secc; }
 
+@{ var name = ViewBag.usernae_secc;
+    var roleid = ViewBag.RoleId;
+    var id = ViewBag.id;}
 
 <style>
     .contact-form {
@@ -15,6 +17,7 @@
         border-radius: 60px;
         padding: 20px 69px;
     }
+
     .form-control {
         border-radius: 23px !important;
     }

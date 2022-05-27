@@ -1,5 +1,8 @@
 ﻿@model Tuple<IEnumerable<task_two.Models.Category>, IEnumerable<task_two.Models.Prodact>, IEnumerable<task_two.Models.Messege>
-                                    , IEnumerable<task_two.Models.MangePage>, IEnumerable<task_two.Models.Testimonial>>
+                                        , IEnumerable<task_two.Models.MangePage>, IEnumerable<task_two.Models.Testimonial>>
+@{ var name = ViewBag.usernae_secc;
+    var roleid = ViewBag.RoleId;
+    var id = ViewBag.id;}
 <style>
 
 
@@ -8,6 +11,7 @@
         background-color: transparent;
         font-family: cursive;
     }
+
         .test:hover {
             text-shadow: 0px 0px 17px rgb(0 0 0);
             color: #1196CC

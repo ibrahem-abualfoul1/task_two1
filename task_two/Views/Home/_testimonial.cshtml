@@ -1,7 +1,10 @@
 ﻿@model Tuple<IEnumerable<task_two.Models.Category>, IEnumerable<task_two.Models.Prodact>, IEnumerable<task_two.Models.Messege>
-                                    , IEnumerable<task_two.Models.MangePage>, IEnumerable<task_two.Models.Testimonial>>
+                                        , IEnumerable<task_two.Models.MangePage>, IEnumerable<task_two.Models.Testimonial>>
 
 
+@{ var name = ViewBag.usernae_secc;
+    var roleid = ViewBag.RoleId;
+    var id = ViewBag.id;}
 <section id="TESTIMONIAL" class="divider parallax layer-overlay overlay-theme-colored-8" data-parallax-ratio="0.1">
     <div class="container">
         <div class="section-title text-center">

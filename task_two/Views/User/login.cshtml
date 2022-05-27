@@ -2,11 +2,15 @@
 
 @{ ViewData["Title"] = "login";
     Layout = "~/Views/Shared/_Layout.cshtml"; }
-  
+
+@{ var name = ViewBag.usernae_secc;
+    var roleid = ViewBag.RoleId;
+    var id = ViewBag.id;}
 <style>
     .login-header {
         text-align: center;
     }
+
     .signin-content {
         margin: 20px auto;
         width: 100%;
@@ -17,25 +21,25 @@
         box-shadow: 7px 8px 14px 3px rgb(0 0 0 / 30%);
         border-radius: 60px;
     }
+
     .image-container {
         position: absolute;
         background-color: transparent;
         z-index: -1;
         width: 100%;
         max-width: 40%;
-
-
     }
+
     .content-container {
         z-index: 1;
         background-color: transparent;
     }
+
     .img-bg {
         width: 100%;
         height: 100%;
-
-
     }
+
     .inner-img {
         max-width: 100%;
         width: 56%;
@@ -80,10 +84,11 @@
             </div>
         </div>
     </div>
-  
+
 </div>
 
 @if (TempData["login"] != null)
 {
-<script>alert('@TempData["login"]');</script>}
+    <script>alert('@TempData["login"]');</script>
+}
 

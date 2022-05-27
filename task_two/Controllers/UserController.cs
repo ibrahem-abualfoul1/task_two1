@@ -189,6 +189,7 @@ namespace task_two.Controllers
       
         public IActionResult Profiel()
         {
+
             var UserData = _userContext.User.SingleOrDefault(x => x.Id == HttpContext.Session.GetInt32("id"));
             ViewBag.id = HttpContext.Session.GetInt32("id");
             ViewBag.usernae_secc = HttpContext.Session.GetString("usernae_secc");
@@ -235,6 +236,9 @@ namespace task_two.Controllers
         [HttpGet]
         public IActionResult AddToCart(int c)
         {
+            ViewBag.id = HttpContext.Session.GetInt32("id");
+            ViewBag.usernae_secc = HttpContext.Session.GetString("usernae_secc");
+            ViewBag.RoleId = HttpContext.Session.GetString("RoleId");
             ViewBag.id = c;
             var pro2 = _userContext.prodacts.Where(x => x.IdProdact == c ).ToList();
             var itemprodacts = _userContext.prodacts.ToList();
@@ -247,6 +251,9 @@ namespace task_two.Controllers
         [HttpPost]
         public IActionResult AddToCart(Cart cart, Prodact prodact)
         {
+            ViewBag.id = HttpContext.Session.GetInt32("id");
+            ViewBag.usernae_secc = HttpContext.Session.GetString("usernae_secc");
+            ViewBag.RoleId = HttpContext.Session.GetString("RoleId");
             var pro2 = _userContext.prodacts.Where(x => x.IdProdact == prodact.IdProdact).FirstOrDefault();
             var UserData = HttpContext.Session.GetInt32("id");
             cart.id_user = UserData;

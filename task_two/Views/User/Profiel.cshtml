@@ -1,9 +1,12 @@
 ﻿@model task_two.Models.Account
 @{ ViewData["Title"] = "Test";
-                Layout = "~/Views/Shared/_Layout.cshtml"; }
+    Layout = "~/Views/Shared/_Layout.cshtml"; }
 
 
 
+@{ var name = ViewBag.usernae_secc;
+    var roleid = ViewBag.RoleId;
+    var id = ViewBag.id;}
 @{
     var ProfilePic = ViewBag.ProPic;
     ProfilePic = "~/Image/" + ProfilePic;
@@ -26,6 +29,7 @@
         border: 3px solid #1196CC;
         border-radius: 20px;
     }
+
     .btn-color:hover {
         background-color: #1196CC !important;
         color: #fff !important;

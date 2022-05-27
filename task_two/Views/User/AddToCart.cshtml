@@ -4,10 +4,10 @@
 
     Layout = "~/Views/Shared/_Layout.cshtml";
                                             }
-                                            @{
-                                                var a = ViewBag.id;
 
-                                            }
+@{ var name = ViewBag.usernae_secc;
+    var roleid = ViewBag.RoleId;
+    var id = ViewBag.id;}
 
                                             <h2>Buy</h2>
                                             <div class="contact-box-main">
@@ -20,17 +20,17 @@
                                                                 <form asp-controller="User" asp-action="addtocart" method="post">
                                                                     @foreach (var item in Model.Item2)
                                                                     {
-                                                                        @if (item.CartProdactTrans.IdProdact == @a)
+                                                                        @if (item.CartProdactTrans.IdProdact == id)
                                                                         {
                                                                             <div class="row">
                                                                                 <div class="col-md-12">
                                                                                     <div class="form-group">
-                                                                                        <input type="text" class="form-control" id="IdProdact" name="IdProdact" placeholder="enter balanc" value="@a" required data-error="Please enter your name" readonly>
+                                                                                        <input type="text" class="form-control" id="IdProdact" name="IdProdact" placeholder="enter balanc" value="@id" required data-error="Please enter your name" readonly>
                                                                                         <div class="help-block with-errors"></div>
                                                                                     </div>
                                                                                 </div> <div class="col-md-12">
                                                                                     <div class="form-group">
-                                                                                        <input type="text" class="form-control" id="IdProdact" name="IdProdact" placeholder="enter balanc" value="@a" required data-error="Please enter your name" readonly>
+                                                                                        <input type="text" class="form-control" id="IdProdact" name="IdProdact" placeholder="enter balanc" value="@id" required data-error="Please enter your name" readonly>
                                                                                         <div class="help-block with-errors"></div>
                                                                                     </div>
                                                                                 </div>
