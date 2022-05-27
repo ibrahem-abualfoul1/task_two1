@@ -940,9 +940,9 @@ var THEMEMASCOT = {};
         /* ---------------------------------------------------------------------- */
         /* ------------------------------ Demo Switcher  ------------------------ */
         /* ---------------------------------------------------------------------- */
-        TM_sidePushPanelContent: function() {
-            if( $body.hasClass('has-side-panel') ) {
-                $.ajax({
+       TM_sidePushPanelContent: function () {
+            if ($body.hasClass('has-side-panel')) {
+                 $.ajax({
                     url: "assert/ajax-load/side-push-panel-content.html",
                     success: function (data) { $body.append(data); },
                     dataType: 'html'
