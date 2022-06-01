@@ -14,7 +14,7 @@ namespace task_two.Models
     {
       
         [Key]
-        public int? Id { get; set; }
+        public int Id { get; set; }
         [Required(ErrorMessage = "Please enter Name")]
         public string Name { get; set; }
 

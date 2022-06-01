@@ -1,0 +1,96 @@
+﻿@model IEnumerable<task_two.Models.Account>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Password)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Phone_number)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UerName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateRegister)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.City)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Background)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RoleTrans)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.genderenum)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.countriesenum)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Password)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Phone_number)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UerName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateRegister)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.City)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Background)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RoleTrans.IdRole)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.genderenum)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.countriesenum)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

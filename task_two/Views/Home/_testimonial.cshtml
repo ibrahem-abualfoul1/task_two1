@@ -31,8 +31,13 @@
                                     </div>
                                     <div class="content mt-20">
                                         <div class="text-right flip pull-right flip mr-20 mt-10">
-                                            <h5 class="author text-white">@item.Reviwe</h5>
-                                            <h6 class="title text-gray-bbb mt-0">Happy Patient</h6>
+                                            <ul class="list-inline">
+                                                @for (int i = 0; i < item.Reviwe; i++)
+                                                {
+                                                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
+
+                                                }
+                                            </ul>
                                         </div>
                                     </div>
                                 </div>
