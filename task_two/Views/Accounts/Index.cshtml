@@ -5,6 +5,11 @@
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
+<style>
+    .table {
+        zoom: 80%;
+    }
+</style>
 <h2>Index</h2>
 
 <p>
@@ -14,39 +19,29 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Name)
+                Name
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Email)
+                Email
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Password)
+                Password
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Phone_number)
+                Phone Number
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.UerName)
+                Username
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.DateRegister)
+                Date Register
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.City)
+                City
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Background)
+                Gender
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.RoleTrans)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.genderenum)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.countriesenum)
-            </th>
-            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -74,16 +69,7 @@
                 @Html.DisplayFor(modelItem => item.City)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Background)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.RoleTrans.IdRole)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.genderenum)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.countriesenum)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |

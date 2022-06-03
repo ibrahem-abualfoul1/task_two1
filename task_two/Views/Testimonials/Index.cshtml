@@ -14,16 +14,13 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.ContactText)
+                Contact Text
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Reviwe)
+               Review
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Id_regester)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.active)
+                Active
             </th>
             <th></th>
         </tr>
@@ -38,15 +35,10 @@
                 @Html.DisplayFor(modelItem => item.Reviwe)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Id_regester)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.active)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id" hidden>Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id" hidden>Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a>
             </td>
         </tr>
 }
