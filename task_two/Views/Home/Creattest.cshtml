@@ -3,18 +3,21 @@
 @{ var name = ViewBag.usernae_secc;
     var roleid = ViewBag.RoleId;
     var id = ViewBag.id;}
-<style>
-    .signin-content {
-        margin: 20px auto;
-        width: 100%;
-        max-width: 40%;
-        padding: 24px 80px;
-        height: 100%;
-        background-color: transparent;
-        box-shadow: 7px 8px 14px 3px rgb(0 0 0 / 30%);
-        border-radius: 60px;
-    }
-</style>
+   <style>
+
+       .contact-form {
+           width: 100%;
+           margin: 53px auto;
+           max-width: 83%;
+           box-shadow: 7px 8px 14px 3px rgb(0 0 0 / 30%);
+           border-radius: 60px;
+           padding: 20px 69px;
+       }
+
+       .form-control {
+           border-radius: 23px !important;
+       }
+   </style>
 @if (id == null)
 {
     <section class="clients bg-theme-colored" hidden>
@@ -27,9 +30,9 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-8 col-sm-12">
-                        <div class="contact-form-right">
+                        <div class="contact-form">
                             <form asp-controller="Home" asp-action="Creattest">
-                                <div class="row">
+                           
 
 
                                     <div class="form-group">
@@ -52,12 +55,12 @@
                                         </div>
 
                                         <div class="submit-button text-center">
-                                            <button class="btn hvr-hover" id="submit" type="submit">Send Message</button>
+                                            <button class="btn hvr-hover" id="submit" type="submit">Share your opinion</button>
 
                                         </div>
 
                                     </div>
-                                </div>
+                             
                             </form>
                         </div>
                     </div>

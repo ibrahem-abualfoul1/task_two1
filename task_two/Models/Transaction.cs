@@ -20,7 +20,7 @@ namespace task_two.Models
 
         public bool activebill { get; set; }
 
-        public virtual Account Accountid { get; set; }
+
 
     }
 }

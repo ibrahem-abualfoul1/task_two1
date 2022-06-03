@@ -1,4 +1,4 @@
-﻿@model IEnumerable<task_two.Models.Transaction>
+﻿@model IEnumerable<task_two.Models.Cart>
 
 @{
     ViewData["Title"] = "Index";
@@ -8,21 +8,17 @@
 <h2>Index</h2>
 <link href="https://cdn.datatables.net/1.11.1/css/jquery.dataTables.min.css" rel="stylesheet" />
 <link href="https://cdn.datatables.net/buttons/2.0.0/css/buttons.dataTables.min.css" rel="stylesheet" />
-
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
 <table class="table">
     <thead>
         <tr>
             <th>
-                Bill ID
+                @Html.DisplayNameFor(model => model.id_user)
             </th>
             <th>
-                Bill Name
-            </th>
-            <th>
-                Price
-            </th>
-            <th>
-               User ID
+                @Html.DisplayNameFor(model => model.order)
             </th>
             <th></th>
         </tr>
@@ -32,18 +28,16 @@
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.idbill)
+                    @Html.DisplayFor(modelItem => item.id_user)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.NameBill)
+                    @Html.DisplayFor(modelItem => item.order)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Price)
+                    <a asp-action="Edit" asp-route-id="@item.id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.id">Delete</a>
                 </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.IdUser)
-                </td>
-           
             </tr>
         }
     </tbody>

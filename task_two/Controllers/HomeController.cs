@@ -47,8 +47,11 @@ namespace task_two.Controllers
         {
             ViewBag.id = HttpContext.Session.GetInt32("id");
             ViewBag.usernae_secc = HttpContext.Session.GetString("usernae_secc");
-            ViewBag.RoleId = HttpContext.Session.GetString("RoleId");
-            return View();
+            ViewBag.RoleId = HttpContext.Session.GetString("RoleId"); 
+            var itemmangepage = _context.mangePages.ToList();
+
+            var modelitems = Tuple.Create<IEnumerable<task_two.Models.MangePage>>(itemmangepage);
+            return View(modelitems);
         }
         public IActionResult admin()
         {

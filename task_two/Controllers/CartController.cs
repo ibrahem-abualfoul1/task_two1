@@ -1,49 +1,50 @@
 ﻿using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using task_two.Data;
 using task_two.Models;
 
-
 namespace task_two.Controllers
 {
-    public class TransactionsController : Controller
+    public class CartController : Controller
     {
         private readonly UserContext _context;
         private readonly IWebHostEnvironment _hostEnvironment;
 
-        public TransactionsController(UserContext context, IWebHostEnvironment _hostEnvironment)
+        public CartController(UserContext context, IWebHostEnvironment _hostEnvironment)
         {
             this._hostEnvironment = _hostEnvironment;
             _context = context;
         }
+        // GET: CartController
         public async Task<IActionResult> Index()
         {
-
             ViewBag.id = HttpContext.Session.GetInt32("id");
             ViewBag.usernae_secc = HttpContext.Session.GetString("usernae_secc");
             ViewBag.RoleId = HttpContext.Session.GetString("RoleId");
 
-            return View(await _context.transactions.ToListAsync());
+            return View(await _context.carts.ToListAsync());
         }
-        // GET: MangePages/Details/5
+
+        // GET: CartController/Details/5
         public async Task<IActionResult> Details(int? id)
         {
+            ViewBag.id = HttpContext.Session.GetInt32("id");
+            ViewBag.usernae_secc = HttpContext.Session.GetString("usernae_secc");
+            ViewBag.RoleId = HttpContext.Session.GetString("RoleId");
             if (id == null)
             {
                 return NotFound();
             }
 
-            var categorie = await _context.transactions
+            var categorie = await _context.carts
 
-                .FirstOrDefaultAsync(m => m.IdTransaction == id);
+                .FirstOrDefaultAsync(m => m.id == id);
             if (categorie == null)
             {
                 return NotFound();
@@ -51,22 +52,27 @@ namespace task_two.Controllers
 
             return View(categorie);
         }
-        // GET: MangePages/Create
+
+        // GET: CartController/Create
         public IActionResult Create()
         {
+            ViewBag.id = HttpContext.Session.GetInt32("id");
+            ViewBag.usernae_secc = HttpContext.Session.GetString("usernae_secc");
+            ViewBag.RoleId = HttpContext.Session.GetString("RoleId");
             return View();
         }
 
-        // POST: MangePages/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // POST: CartController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(Transaction categorie)
+        public async Task<IActionResult> Create(Cart categorie)
         {
+            ViewBag.id = HttpContext.Session.GetInt32("id");
+            ViewBag.usernae_secc = HttpContext.Session.GetString("usernae_secc");
+            ViewBag.RoleId = HttpContext.Session.GetString("RoleId");
             if (ModelState.IsValid)
             {
-             
+
                 _context.Add(categorie);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -74,15 +80,19 @@ namespace task_two.Controllers
 
             return View(categorie);
         }
-        // GET: Testimonial/Edit/5
+
+        // GET: CartController/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
+            ViewBag.id = HttpContext.Session.GetInt32("id");
+            ViewBag.usernae_secc = HttpContext.Session.GetString("usernae_secc");
+            ViewBag.RoleId = HttpContext.Session.GetString("RoleId");
             if (id == null)
             {
                 return NotFound();
             }
 
-            var categorie = await _context.transactions.FindAsync(id);
+            var categorie = await _context.carts.FindAsync(id);
             if (categorie == null)
             {
                 return NotFound();
@@ -90,14 +100,15 @@ namespace task_two.Controllers
             return View(categorie);
         }
 
-        // POST: Testimonial/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // POST: CartController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, Transaction categorie)
+        public async Task<IActionResult> Edit(int id, Cart categorie)
         {
-            if (id != categorie.IdTransaction)
+            ViewBag.id = HttpContext.Session.GetInt32("id");
+            ViewBag.usernae_secc = HttpContext.Session.GetString("usernae_secc");
+            ViewBag.RoleId = HttpContext.Session.GetString("RoleId");
+            if (id != categorie.id)
             {
                 return NotFound();
             }
@@ -106,13 +117,13 @@ namespace task_two.Controllers
             {
                 try
                 {
-                  
+
                     _context.Update(categorie);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!categorieExists(categorie.IdTransaction))
+                    if (!categorieExists(categorie.id))
                     {
                         return NotFound();
                     }
@@ -127,17 +138,19 @@ namespace task_two.Controllers
             return View(categorie);
         }
 
-        // GET: Testimonial/Delete/5
+        // GET: CartController/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            
-                if (id == null)
+            ViewBag.id = HttpContext.Session.GetInt32("id");
+            ViewBag.usernae_secc = HttpContext.Session.GetString("usernae_secc");
+            ViewBag.RoleId = HttpContext.Session.GetString("RoleId");
+            if (id == null)
             {
                 return NotFound();
             }
 
-            var categorie = await _context.transactions
-                .FirstOrDefaultAsync(m => m.IdTransaction == id);
+            var categorie = await _context.carts
+                .FirstOrDefaultAsync(m => m.id == id);
             if (categorie == null)
             {
                 return NotFound();
@@ -146,13 +159,16 @@ namespace task_two.Controllers
             return View(categorie);
         }
 
-        // POST: Testimonial/Delete/5
-        [HttpPost, ActionName("Delete")]
+        // POST: CartController/Delete/5
+        [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var categorie = await _context.transactions.FindAsync(id);
-            _context.transactions.Remove(categorie);
+            ViewBag.id = HttpContext.Session.GetInt32("id");
+            ViewBag.usernae_secc = HttpContext.Session.GetString("usernae_secc");
+            ViewBag.RoleId = HttpContext.Session.GetString("RoleId");
+            var categorie = await _context.carts.FindAsync(id);
+            _context.carts.Remove(categorie);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
@@ -175,7 +191,8 @@ namespace task_two.Controllers
 
         private bool categorieExists(decimal id)
         {
-            return _context.transactions.Any(e => e.IdTransaction == id);
+            return _context.carts.Any(e => e.id == id);
         }
+
     }
 }

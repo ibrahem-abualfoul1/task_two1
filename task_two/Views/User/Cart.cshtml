@@ -7,60 +7,76 @@
     var roleid = ViewBag.RoleId;
     var idcart = ViewBag.cart;
     var id = ViewBag.id;}
+@if (id == null)
+{
+    <div id="notfound">
+        <div class="notfound">
+            <div class="notfound-404">
+                <h1>404</h1>
+            </div>
+            <h2>Oops! This Page Could Not Be Found</h2>
+            <p>Sorry but the page you are looking for does not exist, have been removed. name changed or is temporarily unavailable</p>
+            <a href="~/User/login">Go To Homepage</a>
+        </div>
+    </div>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                id
-            </th>
-            <th>
-                NameProdact
-            </th>
-            <th>
-                Units
-            </th>
-            <th>
-                Price
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model.Item2)
-        {
-            @if (item.id_user == id)
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th hidden>
+                    id
+                </th>
+                <th>
+                    NameProdact
+                </th>
+                <th hidden>
+                    Units
+                </th>
+                <th>
+                    Price
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Item2)
             {
-                @if (item.order == false)
+                @if (item.id_user == id)
                 {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CartProdactTrans.NameProdact)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CartProdactTrans.Units)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CartProdactTrans.Price)
-            </td>
+                    @if (item.order == false)
+                    {
+                        <tr>
+                            <td hidden>
+                                @Html.DisplayFor(modelItem => item.id)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CartProdactTrans.NameProdact)
+                            </td>
+                            <td hidden>
+                                @Html.DisplayFor(modelItem => item.CartProdactTrans.Units)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CartProdactTrans.Price) $
+                            </td>
 
-        <td>
-            <a class="btn btn-flat btn-theme-colored mt-15 text-theme-color-2" asp-action="Delete" asp-route-idcart="@item.id">Delete</a>
+                            <td>
+                                <a class="btn btn-flat btn-theme-colored mt-15 text-theme-color-2" asp-action="Delete" asp-route-idcart="@item.id">Delete</a>
 
-        </td>
+                            </td>
 
-        </tr>
+                        </tr>
+                    }
+
                 }
 
             }
-          
-        }
 
-<td>
-        <a class="btn btn-flat btn-theme-colored mt-15 text-theme-color-2" asp-action="buy" asp-route-c="@id">Read More</a>
-    </td>
-    </tbody>
-</table>
+        <td>
+            <a class="btn btn-flat btn-theme-colored mt-15 text-theme-color-2" asp-action="buy" asp-route-c="@id">Buy cart</a>
+        </td>
+        </tbody>
+    </table>
+}

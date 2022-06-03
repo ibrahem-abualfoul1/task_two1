@@ -16,18 +16,14 @@
             <th>
                 About Us
             </th>
-            <th>
-                Contact Us
-            </th>
+           
             <th>
                 Pharmacy Name
             </th>
             <th>
                 Pharmacy Location
             </th>
-            <th>
-                Social Media
-            </th>
+          
             <th></th>
         </tr>
     </thead>
@@ -37,18 +33,14 @@
             <td>
                 @Html.DisplayFor(modelItem => item.AboutUs)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ContactUs)
-            </td>
+           
             <td>
                 @Html.DisplayFor(modelItem => item.pharmacyName)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Pharmacylocation)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SocialMedia)
-            </td>
+          
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.Id">Details</a> |

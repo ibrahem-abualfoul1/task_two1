@@ -24,7 +24,6 @@ namespace task_two.Models
 
 
         
-        public virtual Prodact IdProdactTrans { get; set; }
         
       
 

@@ -12,10 +12,8 @@ namespace task_two.Models
         public int Id { get; set; }
 
         public string AboutUs { get; set; }
-        public string ContactUs { get; set; }
         public string pharmacyName { get; set; }
         public string Pharmacylocation { get; set; }
-        public string SocialMedia { get; set; }
 
 
 

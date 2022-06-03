@@ -24,10 +24,12 @@
                     <div class="owl-carousel-3col" data-dots="true">
 
                         @foreach (var item in Model.Item5)
-                        {<div class="item">
+                            @if (item.active == true)
+                            {
+                                {<div class="item">
                                 <div class="testimonial style1">
                                     <div class="comment bg-theme-colored2">
-                                        <p class="text-white">@item.Id</p>
+                                        <p class="text-white">@item.ContactText</p>
                                     </div>
                                     <div class="content mt-20">
                                         <div class="text-right flip pull-right flip mr-20 mt-10">
@@ -42,6 +44,7 @@
                                     </div>
                                 </div>
                             </div>}
+                                }
 
 
                     </div>

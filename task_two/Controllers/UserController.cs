@@ -315,7 +315,6 @@ namespace task_two.Controllers
             bill.DateBill = DateTime.Now;
             bill.Id_regester = UserData;
             bill.activebill = false;
-            bill.IdProdactTrans = pro2;
             _userContext.Add(bill);
             _userContext.SaveChanges();
 

@@ -1,4 +1,5 @@
-﻿
+﻿@model Tuple<IEnumerable<task_two.Models.MangePage>>
+
 @{
     ViewData["Title"] = "About_us";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -20,12 +21,13 @@
 <div class="about">
     <div class="container">
         <div class="row">
-            <dir class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
                 <div class="about_box">
                     <img src="~/assert/images/doctors/about.png" />
                 </div>
-            </dir>
-            <dir class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+            </div>
+
+            @*<dir class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
                 <div class="about_box">
 
                     <p>
@@ -53,7 +55,16 @@
 
                     </p>
                 </div>
-            </dir>
+            </dir>*@
+
         </div>
+        <div style="font-family: cursive;">
+            @foreach (var item in Model.Item1)
+            {
+
+                @item.AboutUs;
+
+            }
+        </div>
+
     </div>
-</div>

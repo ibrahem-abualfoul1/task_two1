@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using task_two.Data;
 
 namespace task_two.Migrations
 {
     [DbContext(typeof(UserContext))]
-    partial class UserContextModelSnapshot : ModelSnapshot
+    [Migration("20220603214737_test3")]
+    partial class test3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -275,6 +277,9 @@ namespace task_two.Migrations
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
+                    b.Property<int?>("AccountidId")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("DateBill")
                         .HasColumnType("datetime2");
 
@@ -294,6 +299,8 @@ namespace task_two.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("IdTransaction");
+
+                    b.HasIndex("AccountidId");
 
                     b.ToTable("transactions");
                 });
@@ -327,6 +334,15 @@ namespace task_two.Migrations
                         .IsRequired();
 
                     b.Navigation("Category");
+                });
+
+            modelBuilder.Entity("task_two.Models.Transaction", b =>
+                {
+                    b.HasOne("task_two.Models.Account", "Accountid")
+                        .WithMany()
+                        .HasForeignKey("AccountidId");
+
+                    b.Navigation("Accountid");
                 });
 
             modelBuilder.Entity("task_two.Models.Category", b =>

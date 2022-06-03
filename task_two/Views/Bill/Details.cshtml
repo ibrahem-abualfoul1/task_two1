@@ -1,0 +1,55 @@
+﻿@model task_two.Models.Bill
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Bill</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NameBill)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NameBill)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Id_regester)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Id_regester)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.PhoneNumber)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.PhoneNumber)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.activebill)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.activebill)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DateBill)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DateBill)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.IdBill">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

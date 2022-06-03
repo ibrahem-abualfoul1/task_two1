@@ -886,7 +886,7 @@ var THEMEMASCOT = {};
             var t = setTimeout(function() {
                 THEMEMASCOT.header.TM_fullscreenMenu();
                 THEMEMASCOT.header.TM_sidePanelReveal();
-                THEMEMASCOT.header.TM_sidePushPanelContent();
+               // THEMEMASCOT.header.TM_sidePushPanelContent();
                 THEMEMASCOT.header.TM_scroolToTopOnClick();
                 THEMEMASCOT.header.TM_scrollToFixed();
                 THEMEMASCOT.header.TM_sticky();
@@ -1218,7 +1218,7 @@ var THEMEMASCOT = {};
                 THEMEMASCOT.widget.TM_jflickrfeed();
                 THEMEMASCOT.widget.TM_accordion_toggles();
                 THEMEMASCOT.widget.TM_tooltip();
-                //THEMEMASCOT.widget.TM_countDownTimer();
+                THEMEMASCOT.widget.TM_countDownTimer();
             }, 0);
 
         },

@@ -56,10 +56,16 @@
                             {@item.pharmacyName}
                         </span>    <br />
 
-                        Pharmacy- ‘PH-Help’ .it is the online deals site of medications supported by a Jordan Pharmacy, situated at Irbid near to "mujamma amman".
+                        Pharmacy- ‘PH-Help’ .it is the online deals site of medications supported by a Jordan Pharmacy, situated at  @foreach (var item in Model.Item4)
+                        {@item.Pharmacylocation} near to "mujamma amman".
                         <br />
 
-                        Situated in the core of irbid, ‘PH-Help’ pharmacy is open all time.                      <br />
+                        Situated in the core of
+                        @foreach (var item in Model.Item4)
+                        {@item.Pharmacylocation}
+
+
+                        , ‘PH-Help’ pharmacy is open all time.                      <br />
 
 
                         <span id="read_moredots" style="display: inline"></span><span id="read_moremore" style="display:none">

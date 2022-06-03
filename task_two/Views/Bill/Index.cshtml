@@ -1,28 +1,37 @@
-﻿@model IEnumerable<task_two.Models.Transaction>
+﻿@model IEnumerable<task_two.Models.Bill>
 
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
-
-<h2>Index</h2>
 <link href="https://cdn.datatables.net/1.11.1/css/jquery.dataTables.min.css" rel="stylesheet" />
 <link href="https://cdn.datatables.net/buttons/2.0.0/css/buttons.dataTables.min.css" rel="stylesheet" />
 
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create" hidden>Create New</a>
+</p>
 <table class="table">
     <thead>
         <tr>
             <th>
-                Bill ID
+               Customer Name
             </th>
             <th>
-                Bill Name
+                @Html.DisplayNameFor(model => model.Price)
             </th>
             <th>
-                Price
+                @Html.DisplayNameFor(model => model.Id_regester)
             </th>
             <th>
-               User ID
+                @Html.DisplayNameFor(model => model.PhoneNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.activebill)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateBill)
             </th>
             <th></th>
         </tr>
@@ -32,22 +41,33 @@
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.idbill)
-                </td>
-                <td>
                     @Html.DisplayFor(modelItem => item.NameBill)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Price)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.IdUser)
+                    @Html.DisplayFor(modelItem => item.Id_regester)
                 </td>
-           
+                <td>
+                    @Html.DisplayFor(modelItem => item.PhoneNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.activebill)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateBill)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.IdBill">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.IdBill">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.IdBill" hidden>Delete</a>
+                </td>
             </tr>
         }
     </tbody>
 </table>
+
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
 
 <script type="text/javascript" src="https://cdn.datatables.net/1.11.1/js/jquery.dataTables.min.js" defer></script>

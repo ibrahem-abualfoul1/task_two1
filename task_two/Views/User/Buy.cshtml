@@ -4,7 +4,6 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Buy</h2>
 
 @{ var name = ViewBag.usernae_secc;
     var roleid = ViewBag.RoleId;
@@ -18,51 +17,53 @@
                 <div class="contact-form-right">
 
                     <form asp-controller="User" asp-action="buy" method="post">
-                        <table style="width:100%">
-                            <tr>
-                                <th>IdProdact</th>
-                                <th>Price</th>
-                                <th>NameProdact</th>
-                            </tr>
-                            @foreach (var item in Model.Item1)
-                            {
-                                @if (item.id_user == id)
+                        <div class="center-block" style="padding: 4%; background-color: #1196CC;">
+                            <table style="width:100% ; color:white;">
+                                <tr>
+                                    <th hidden>IdProdact</th>
+                                    <th>Price</th>
+                                    <th>NameProdact</th>
+                                </tr>
+                                @foreach (var item in Model.Item1)
                                 {
-                                    @if (item.order == false)
+                                    @if (item.id_user == id)
+                                    {
+                                        @if (item.order == false)
+                                        {
+
+                                            <tr>
+                                                <td hidden>@id</td>
+                                                <td>@item.CartProdactTrans.Price $</td>
+                                                <td>@item.CartProdactTrans.NameProdact</td>
+                                            </tr>
+
+                                            price += item.CartProdactTrans.Price;
+                                        }
+                                    }
+                                    else
                                     {
 
-                                        <tr>
+                                        <tr hidden>
                                             <td>@id</td>
-                                            <td>@item.CartProdactTrans.Price</td>
+                                            <td>@item.CartProdactTrans.Price $</td>
                                             <td>@item.CartProdactTrans.NameProdact</td>
                                         </tr>
-
-                                        price += item.CartProdactTrans.Price;
                                     }
-                                }
-                                else
-                                {
 
-                                    <tr hidden>
-                                        <td>@id</td>
-                                        <td>@item.CartProdactTrans.Price</td>
-                                        <td>@item.CartProdactTrans.NameProdact</td>
-                                    </tr>
                                 }
 
-                            }
-
-                        </table>
+                            </table>
+                        </div>
                         <div class="col-md-12">
                             <div class="form-group">
-                                <input type="text" placeholder="NameBill" id="NameBill" class="form-control" name="NameBill" required data-error="Please enter your email">
+                                <input type="text" placeholder="NameBill" id="NameBill" class="form-control" name="Customer Name" required data-error="Please enter your Name">
                                 <div class="help-block with-errors"></div>
                             </div>
                         </div>
 
                         <div class="col-md-12">
                             <div class="form-group">
-                                <input type="text" placeholder="PhoneNumber" id="PhoneNumber" class="form-control" name="PhoneNumber" required data-error="Please enter your email">
+                                <input type="text" placeholder="PhoneNumber" id="PhoneNumber" class="form-control" name="PhoneNumber" required data-error="Please enter your Phone Number">
                                 <div class="help-block with-errors"></div>
                             </div>
                         </div>   
@@ -75,7 +76,7 @@
 
 
                         <div class="submit-button text-center">
-                            <button class="btn hvr-hover" id="submit" type="submit">buy</button>
+                            <button class="btn hvr-hover" id="submit" type="submit">Done</button>
 
                         </div>
 

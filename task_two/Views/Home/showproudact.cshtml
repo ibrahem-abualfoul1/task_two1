@@ -21,7 +21,7 @@
 
                     <div class="col-xs-12 col-sm-6 col-md-4 mb-30">
                         <div class="p-20 bg-white">
-                            <img src="~/assets/img/city-profile.jpg" asp-append-version="true">
+                            <img src="~/assert/images/pexels-julie-viken-593451.jpg" asp-append-version="true">
                             <h3 class="">
                                 <a href="#">
                                     @item.NameProdact
@@ -32,11 +32,14 @@
                             </p>
                             <p>
 
-                                @item.IdCategory
+                                @item.Price $
                             </p>
 
+                            @if (name != null)
+                            {
+                                <a class="btn btn-flat btn-theme-colored mt-15 text-theme-color-2" asp-action="Addtocart" asp-route-c="@item.IdProdact">add to </a>
 
-                            <a class="btn btn-flat btn-theme-colored mt-15 text-theme-color-2" asp-action="Addtocart" asp-route-c="@item.IdProdact">add to </a>
+                            }
                         </div>
                     </div>}
 
