@@ -54,7 +54,13 @@
                 <input asp-for="Background" class="form-control" />
                 <span asp-validation-for="Background" class="text-danger"></span>
             </div>
-        
+            <div class="form-group">
+                <label style="text-align: center !important; font-weight: bold;">Role id</label>
+                <select class="form-control" id="RoleId" name="RoleId">
+                    <option value="1">Admin - 1</option>
+                    <option value="2">User - 2 </option>
+                </select>
+            </div>
             <div class="form-group">
                 @Html.DropDownListFor(m => m.genderenum,
     new SelectList(Enum.GetValues(typeof(Gender))),

@@ -127,43 +127,10 @@ namespace task_two.Controllers
             ViewBag.usernae_secc = HttpContext.Session.GetString("usernae_secc");
             ViewBag.RoleId = HttpContext.Session.GetString("RoleId");
 
-            if (id != account.Id)
-            {
-                return NotFound();
-            }
+            _context.Update(account);
+            await _context.SaveChangesAsync();
 
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    string wwwRootPath = _hostEnvironment.WebRootPath;
-                    string fileName = Guid.NewGuid().ToString() + "_" + account.ImageFile_back.FileName;
-                    string extension = Path.GetExtension(account.ImageFile_back.FileName);
-                    string path = Path.Combine(wwwRootPath + "/Image/", fileName);
-                    using (var fileStream = new FileStream(path, FileMode.Create))
-                    {
-                        await account.ImageFile_back.CopyToAsync(fileStream);
-                    }
-                    account.Background = fileName;
-
-                    _context.Update(account);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!categorieExists(account.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
-            }
-
-            return View(account);
+            return RedirectToAction(nameof(Index));
         }
 
         // GET: categories/Delete/5
