@@ -59,7 +59,7 @@ namespace task_two.Controllers
             ViewBag.id = HttpContext.Session.GetInt32("id");
             ViewBag.usernae_secc = HttpContext.Session.GetString("usernae_secc");
             ViewBag.RoleId = HttpContext.Session.GetString("RoleId");
-            ViewData["NameCategory"] = new SelectList(_context.categories, "NameCategory", "NameCategory");
+            ViewData["IdCategory"] = new SelectList(_context.categories, "IdCategory", "IdCategory");
             return View();
         }
 
@@ -82,7 +82,7 @@ namespace task_two.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["NameCategory"] = new SelectList(_context.categories, "NameCategory", "NameCategory", producte.Category.NameCategory);
+            ViewData["IdCategory"] = new SelectList(_context.categories, "IdCategory", "IdCategory", producte.IdCategory);
 
             return View(producte);
         }
@@ -102,7 +102,7 @@ namespace task_two.Controllers
             {
                 return NotFound();
             }
-            ViewData["NameCategory"] = new SelectList(_context.categories, "NameCategory", "NameCategory", producte.Category);
+            ViewData["IdCategory"] = new SelectList(_context.categories, "IdCategory", "IdCategory", producte.IdCategory);
             return View(producte);
         }
 
@@ -143,7 +143,7 @@ namespace task_two.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["NameCategory"] = new SelectList(_context.categories, "NameCategory", "NameCategory", producte.Category);
+            ViewData["IdCategory"] = new SelectList(_context.categories, "IdCategory", "IdCategory", producte.IdCategory);
 
             return View(producte);
         }

@@ -12,9 +12,13 @@ namespace task_two.Models
 
         [Key]
         public int IdBill { get; set; }
+        [Required(ErrorMessage = "Please enter name bil")]
+
         public string NameBill { get; set; }
         public double Price { get; set; }
         public int? Id_regester { get; set; }
+        [Required(ErrorMessage = "Please enter phone")]
+        [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$", ErrorMessage = "Not a valid phone number")]
         public int PhoneNumber { get; set; }
        
         public bool activebill { get; set; }

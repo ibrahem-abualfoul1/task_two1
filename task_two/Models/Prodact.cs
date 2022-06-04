@@ -12,11 +12,14 @@ namespace task_two.Models
     {
         [Key]
         public int IdProdact { get; set; }
+        [Required(ErrorMessage = "Please enter NameProdact")]
+
         public string NameProdact { get; set; }
         public string Describtion { get; set; }
 
         public DateTime DateProdact { get; set; }
-
+        [Required(ErrorMessage = "Please enter phone")]
+        [RegularExpression(@"[0-9]", ErrorMessage = "Not a valid  number")]
         public int Price { get; set; }
         public int Units { get; set; }
 

@@ -12,6 +12,7 @@ namespace task_two.Models
     {
         [Key]
         public int IdCategory { get; set; }
+        [Required(ErrorMessage = "Please enter NameCategory")]
 
         public string NameCategory { get; set; }
         public string UrlCategory { get; set; }

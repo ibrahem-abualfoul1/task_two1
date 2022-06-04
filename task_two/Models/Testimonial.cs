@@ -11,9 +11,12 @@ namespace task_two.Models
 
         [Key]
         public int Id { get; set; }
+        [Required(ErrorMessage = "Please enter ContactText")]
+
         public string ContactText { get; set; }
 
-       
+        [Required(ErrorMessage = "Please enter Reviwe")]
+
         public int Reviwe { get; set; } 
         
         public int? Id_regester { get; set; }
