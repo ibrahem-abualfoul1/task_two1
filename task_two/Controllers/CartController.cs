@@ -22,13 +22,16 @@ namespace task_two.Controllers
             _context = context;
         }
         // GET: CartController
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
             ViewBag.id = HttpContext.Session.GetInt32("id");
             ViewBag.usernae_secc = HttpContext.Session.GetString("usernae_secc");
             ViewBag.RoleId = HttpContext.Session.GetString("RoleId");
+            var itemmessege = _context.prodacts.ToList();
+            var itemtestmonel = _context.carts.ToList();
+            var modelitems = Tuple.Create<IEnumerable<task_two.Models.Prodact>, IEnumerable<task_two.Models.Cart>>( itemmessege, itemtestmonel);
 
-            return View(await _context.carts.ToListAsync());
+            return View(modelitems);
         }
 
         // GET: CartController/Details/5

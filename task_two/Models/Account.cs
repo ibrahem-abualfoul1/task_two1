@@ -28,7 +28,7 @@ namespace task_two.Models
         [Required(ErrorMessage = "Please enter phone")]
         [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$", ErrorMessage = "Not a valid phone number")]
         public string Phone_number { get; set; }
-        [Required(ErrorMessage = "Please enter UerName")]
+        [Required(ErrorMessage = "Please enter Your Name")]
         public string UerName { get; set; }
         public DateTime DateRegister { get; set; }
 

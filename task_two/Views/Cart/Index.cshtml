@@ -1,5 +1,4 @@
-﻿@model IEnumerable<task_two.Models.Cart>
-
+﻿@model Tuple<IEnumerable<task_two.Models.Prodact>, IEnumerable<task_two.Models.Cart>>
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
@@ -15,23 +14,29 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.id_user)
+              id_user
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.order)
+              order
+            </th>
+            <th>
+                NameProdact
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model)
+        @foreach (var item in Model.Item2)
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.id_user)
+                   @item.id
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.order)
+                    @item.order
+                </td>
+                <td>
+                    @item.CartProdactTrans.NameProdact
                 </td>
                 <td>
                     <a asp-action="Edit" asp-route-id="@item.id">Edit</a> |

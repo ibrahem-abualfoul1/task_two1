@@ -48,7 +48,7 @@ namespace task_two.Controllers
         {
             if (ModelState.IsValid)
             {
-                var chek = _userContext.User.Where(x => x.UerName == user.UerName && x.Email == user.Email && x.Phone_number == user.Phone_number).FirstOrDefault();
+                var chek = _userContext.User.Where(x => x.UerName == user.UerName ).FirstOrDefault();
                 if (null == chek)
                 {
                     user.RoleId = 2;

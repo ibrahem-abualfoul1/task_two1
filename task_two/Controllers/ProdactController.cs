@@ -59,7 +59,8 @@ namespace task_two.Controllers
             ViewBag.id = HttpContext.Session.GetInt32("id");
             ViewBag.usernae_secc = HttpContext.Session.GetString("usernae_secc");
             ViewBag.RoleId = HttpContext.Session.GetString("RoleId");
-            ViewData["IdCategory"] = new SelectList(_context.categories, "IdCategory", "IdCategory");
+            ViewData["IdCategory"] = new SelectList(_context.categories, "IdCategory", "NameCategory");
+            
             return View();
         }
 
@@ -82,7 +83,7 @@ namespace task_two.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["IdCategory"] = new SelectList(_context.categories, "IdCategory", "IdCategory", producte.IdCategory);
+            ViewData["IdCategory"] = new SelectList(_context.categories, "IdCategory", "NameCategory", producte.IdCategory);
 
             return View(producte);
         }

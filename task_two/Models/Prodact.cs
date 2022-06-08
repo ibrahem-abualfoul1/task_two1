@@ -18,7 +18,7 @@ namespace task_two.Models
         public string Describtion { get; set; }
 
         public DateTime DateProdact { get; set; }
-        [Required(ErrorMessage = "Please enter phone")]
+        [Required(ErrorMessage = "Please enter Price")]
         [RegularExpression(@"[0-9]", ErrorMessage = "Not a valid  number")]
         public int Price { get; set; }
         public int Units { get; set; }
